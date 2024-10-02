@@ -80,11 +80,11 @@ void SpecificWorker::compute()
     std::vector<RoboCompLaser::TLaserData> lData;
   //std::cout << "Compute worker" << std::endl;
     try{
-    	auto local this->laser_proxy->getLaserData();
+	auto lData = this->laser_proxy->getLaserData();
     }
     catch(const std::exception& e){ std::cout << e.what() << std::endl; }
 
-    qDebug() << ldata.size();
+    qDebug() << lData.size();
 	
 }
 
