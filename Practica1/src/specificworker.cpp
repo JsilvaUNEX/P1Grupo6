@@ -18,16 +18,19 @@
  */
 #include "specificworker.h"
 
+// Definición de los estados del robot
+enum class State { IDLE, FORWARD, TURN, FOLLOW_WALL, SPIRAL };
+State current_state = State::FORWARD;  // Estado inicial
+
+const float MAX_ADV_SPEED = 1000.0f;  // Velocidad máxima de avance
+const float DISTANCIA_MINIMA = 300.0f;  // Distancia mínima para evitar colisiones
+
 /**
 * \brief Default constructor
 */
 SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorker(tprx)
 {
-	this->startup_check_flag = startup_check;
-	// Uncomment if there's too many debug messages
-	// but it removes the possibility to see the messages
-	// shown in the console with qDebug()
-//	QLoggingCategory::setFilterRules("*.debug=false\n");
+    this->startup_check_flag = startup_check;
 }
 
 /**
@@ -35,110 +38,96 @@ SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorke
 */
 SpecificWorker::~SpecificWorker()
 {
-	std::cout << "Destroying SpecificWorker" << std::endl;
+    std::cout << "Destroying SpecificWorker" << std::endl;
 }
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-//	THE FOLLOWING IS JUST AN EXAMPLE
-//	To use innerModelPath parameter you should uncomment specificmonitor.cpp readConfig method content
-//	try
-//	{
-//		RoboCompCommonBehavior::Parameter par = params.at("InnerModelPath");
-//		std::string innermodel_path = par.value;
-//		innerModel = std::make_shared(innermodel_path);
-//	}
-//	catch(const std::exception &e) { qFatal("Error reading config params"); }
-	
-
-	return true;
+    return true;
 }
 
 void SpecificWorker::initialize()
 {
-	std::cout << "Initialize worker" << std::endl;
-	if(this->startup_check_flag)
-	{
-		this->startup_check();
-	}
-	else
-	{
+    std::cout << "Initialize worker" << std::endl;
+    if(this->startup_check_flag)
+    {
+        this->startup_check();
+    }
+    else
+    {
+        #ifdef HIBERNATION_ENABLED
+            hibernationChecker.start(500);
+        #endif
 
-		#ifdef HIBERNATION_ENABLED
-			hibernationChecker.start(500);
-		#endif
-
-		this->setPeriod(STATES::Compute, 100);
-		//this->setPeriod(STATES::Emergency, 500);
-
-	}
-
+        this->setPeriod(STATES::Compute, 100);
+    }
 }
 
 void SpecificWorker::compute()
 {
-    std::vector<RoboCompLaser::TLaserData> lData;
-  //std::cout << "Compute worker" << std::endl;
-    try{
-	auto lData = this->laser_proxy->getLaserData();
-    }
-    catch(const std::exception& e){ std::cout << e.what() << std::endl; }
+    try {
+        // Obtener los datos del Lidar3D con los parámetros necesarios
+        const std::string lidar_name = "myLidar";  // Nombre del lidar, ajusta según tu configuración
+        float start = 0.0f;  // Posición de inicio
+        float length = 1000.0f;  // Longitud de los datos a obtener
+        int decimation = 1;  // Factor de decimación
 
-    qDebug() << lData.size();
-	
+        // Llamada correcta para obtener los datos del Lidar
+        RoboCompLidar3D::TData lData = this->lidar3d_proxy->getLidarData(lidar_name, start, length, decimation);
+
+        // Imprimir el número de puntos
+        qDebug() << "Number of points: " << lData.points.size();  // Accede a la colección de puntos
+
+        // Iterar sobre los puntos y procesarlos
+        for (const auto& point : lData.points) {
+            qDebug() << "Point (x, y, z): (" << point.x << ", " << point.y << ", " << point.z << ")";
+            qDebug() << "Distance2D: " << point.distance2d;  // O cualquier otro campo que necesites
+        }
+
+        // Según el estado actual, llamamos a diferentes funciones de comportamiento
+        switch(current_state) {
+        case State::FORWARD:
+            current_state = FORWARD_method(lData);
+            break;
+        case State::TURN:
+            current_state = TURN_method(lData);
+            break;
+        case State::IDLE:
+            // Estado IDLE, no hacer nada
+            break;
+        }
+    }
+    catch(const std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+// Función que maneja el avance hacia adelante
+SpecificWorker::State SpecificWorker::FORWARD_method(const RoboCompLidar3D::TData &ldata)
+{
+
+}
+
+// Función que maneja el giro del robot
+SpecificWorker::State SpecificWorker::TURN_method(const RoboCompLidar3D::TData &ldata)
+{
+    // Verificar si hay espacio libre adelante
+
 }
 
 void SpecificWorker::emergency()
 {
     std::cout << "Emergency worker" << std::endl;
-	//computeCODE
-	//
-	//if (SUCCESSFUL)
-    //  emmit goToRestore()
 }
 
-//Execute one when exiting to emergencyState
 void SpecificWorker::restore()
 {
     std::cout << "Restore worker" << std::endl;
-	//computeCODE
-	//Restore emergency component
-
 }
 
 int SpecificWorker::startup_check()
 {
-	std::cout << "Startup check" << std::endl;
-	QTimer::singleShot(200, qApp, SLOT(quit()));
-	return 0;
+    std::cout << "Startup check" << std::endl;
+    QTimer::singleShot(200, qApp, SLOT(quit()));
+    return 0;
 }
-
-
-
-
-/**************************************/
-// From the RoboCompLaser you can call this methods:
-// this->laser_proxy->getLaserAndBStateData(...)
-// this->laser_proxy->getLaserConfData(...)
-// this->laser_proxy->getLaserData(...)
-
-/**************************************/
-// From the RoboCompLaser you can use this types:
-// RoboCompLaser::LaserConfData
-// RoboCompLaser::TData
-
-/**************************************/
-// From the RoboCompOmniRobot you can call this methods:
-// this->omnirobot_proxy->correctOdometer(...)
-// this->omnirobot_proxy->getBasePose(...)
-// this->omnirobot_proxy->getBaseState(...)
-// this->omnirobot_proxy->resetOdometer(...)
-// this->omnirobot_proxy->setOdometer(...)
-// this->omnirobot_proxy->setOdometerPose(...)
-// this->omnirobot_proxy->setSpeedBase(...)
-// this->omnirobot_proxy->stopBase(...)
-
-/**************************************/
-// From the RoboCompOmniRobot you can use this types:
-// RoboCompOmniRobot::TMechParams
-

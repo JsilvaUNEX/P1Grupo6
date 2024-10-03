@@ -17,39 +17,40 @@
  *    along with RoboComp.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
-	\brief
-	@author authorname
-*/
-
-
-
 #ifndef SPECIFICWORKER_H
 #define SPECIFICWORKER_H
 
 #define HIBERNATION_ENABLED
 
 #include <genericworker.h>
+#include <tuple>  // Para el uso de std::tuple
+#include <vector>  // Para el uso de std::vector
 
 class SpecificWorker : public GenericWorker
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-	SpecificWorker(TuplePrx tprx, bool startup_check);
-	~SpecificWorker();
-	bool setParams(RoboCompCommonBehavior::ParameterList params);
+    SpecificWorker(TuplePrx tprx, bool startup_check);
+    ~SpecificWorker();
+    bool setParams(RoboCompCommonBehavior::ParameterList params);
 
+    public slots:
+        void initialize();
+    void compute();
+    void emergency();
+    void restore();
+    int startup_check();
 
-
-public slots:
-	void initialize();
-	void compute();
-	void emergency();
-	void restore();
-	int startup_check();
 private:
-	bool startup_check_flag;
+    bool startup_check_flag;
 
+    // Estados del robot
+    enum class State { IDLE, FORWARD, TURN, FOLLOW_WALL, SPIRAL };
+    State current_state;
+
+    // Estrategias de comportamiento del robot
+    State FORWARD_method(const RoboCompLidar3D::TData &ldata);
+    State TURN_method(const RoboCompLidar3D::TData &ldata);
 };
 
-#endif
+#endif // SPECIFICWORKER_H
