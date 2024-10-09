@@ -144,6 +144,7 @@ SpecificWorker::RetVal SpecificWorker::turn(auto &points)
     static std::mt19937 gen(rd());
     static std::uniform_int_distribution<int> dist(0, 1);
     static bool first_time = true;
+    static int sign = 1;
 
     // check if the central part of the filtered_points vector is free to go. If so stop turning and change state to FORWARD
     int offset = params.LIDAR_OFFSET * (points.size() / 2);
@@ -157,7 +158,6 @@ SpecificWorker::RetVal SpecificWorker::turn(auto &points)
     else    // Keep doing my business
     {
         // Generate a random sign (-1 or 1) if first_time = true;
-        int sign = 1;
         if(first_time)
         {
             sign = dist(gen);
