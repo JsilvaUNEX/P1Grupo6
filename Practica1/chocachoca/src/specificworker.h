@@ -58,7 +58,7 @@ class SpecificWorker : public GenericWorker
             float MAX_ADV_SPEED = 1000; // mm/s
             float MAX_ROT_SPEED = 1; // rad/s
             float STOP_THRESHOLD = MAX_ADV_SPEED*0.5; // mm
-            float ADVANCE_THRESHOLD = ROBOT_WIDTH * 1.3; // mm
+            float ADVANCE_THRESHOLD = ROBOT_WIDTH * 1.1; // mm
             float LIDAR_OFFSET = 9.f/10.f; // eight tenths of vector's half size
             float LIDAR_FRONT_SECTION = 0.5; // rads, aprox 30 degrees
             std::string LIDAR_NAME_LOW = "bpearl";
@@ -72,18 +72,24 @@ class SpecificWorker : public GenericWorker
         AbstractGraphicViewer *viewer;
 
         // state machine
-        enum class STATE {FORWARD, TURN};
+        enum class STATE {FORWARD, TURN, WALL, SPIRAL};
         STATE state = STATE::FORWARD;
 
         using RetVal = std::tuple<STATE, float, float>;
         RetVal forward(auto &filtered_points);
         RetVal turn(auto &filtered_points);
+        RetVal wall(auto &filtered_points);
+        RetVal spiral(auto &filtered_points);
         void draw_lidar(auto &filtered_points, QGraphicsScene *scene);
         QGraphicsPolygonItem* robot_draw;
         std::expected<int, string> closest_lidar_index_to_given_angle(const auto &points, float angle);
 
         // random number generator
         std::random_device rd;
+
+    // Variables para el estado SPIRAL
+        float current_adv_speed = 0.f;  // Velocidad de avance actual
+        float current_rot_speed = 0.f;  // Velocidad de rotación actual
 };
 
 #endif
