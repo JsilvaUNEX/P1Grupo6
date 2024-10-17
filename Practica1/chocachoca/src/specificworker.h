@@ -57,14 +57,15 @@ class SpecificWorker : public GenericWorker
             float ROBOT_LENGTH = 480;  // mm
             float MAX_ADV_SPEED = 1000; // mm/s
             float MAX_ROT_SPEED = 1; // rad/s
-            float STOP_THRESHOLD = MAX_ADV_SPEED*0.5; // mm
-            float ADVANCE_THRESHOLD = ROBOT_WIDTH * 1.1; // mm
+            float STOP_THRESHOLD = MAX_ADV_SPEED*0.7; // mm
+            float ADVANCE_THRESHOLD = ROBOT_WIDTH * 1.7; // mm
+            float SPIRAL_THRESHOLD = ROBOT_WIDTH * 2.5;  // Umbral mayor para iniciar SPIRAL
             float LIDAR_OFFSET = 9.f/10.f; // eight tenths of vector's half size
             float LIDAR_FRONT_SECTION = 0.5; // rads, aprox 30 degrees
             std::string LIDAR_NAME_LOW = "bpearl";
             std::string LIDAR_NAME_HIGH = "helios";
             QRectF GRID_MAX_DIM{-5000, 2500, 10000, -5000};
-
+            int wall_counter = 0;
         };
         Params params;
 
@@ -86,6 +87,8 @@ class SpecificWorker : public GenericWorker
 
         // random number generator
         std::random_device rd;
+
+
 
     // Variables para el estado SPIRAL
         float current_adv_speed = 0.f;  // Velocidad de avance actual

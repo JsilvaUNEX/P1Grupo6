@@ -128,24 +128,40 @@ void SpecificWorker::compute()
  */
 SpecificWorker::RetVal SpecificWorker::forward(auto &points)
 {
-    // check if the central part of the filtered_points vector has a minimum lower than the size of the robot
+    qDebug() << "FORWARD";
+    // Buscar el punto más cercano dentro del rango frontal del LIDAR
     auto offset_begin = closest_lidar_index_to_given_angle(points, -params.LIDAR_FRONT_SECTION);
     auto offset_end = closest_lidar_index_to_given_angle(points, params.LIDAR_FRONT_SECTION);
     if(offset_begin and offset_end)
     {
-        auto min_point = std::min_element(std::begin(points) + offset_begin.value(), std::begin(points) + offset_end.value(), [](auto &a, auto &b)
-        { return a.distance2d < b.distance2d; });
-        if (min_point != points.end() and min_point->distance2d < params.STOP_THRESHOLD)
-            return RetVal(STATE::TURN, 0.f, 0.f);  // stop and change state if obstacle detected
+        auto min_point = std::min_element(std::begin(points) + offset_begin.value(),
+                                          std::begin(points) + offset_end.value(),
+                                          [](auto &a, auto &b) { return a.distance2d < b.distance2d; });
+
+        if (min_point != points.end() && min_point->distance2d < params.STOP_THRESHOLD)
+        {
+            // Si detecta un obstáculo cercano, cambiar a estado TURN
+            return RetVal(STATE::WALL, 0.f, 0.f);
+        }
+        else if (min_point->distance2d > params.SPIRAL_THRESHOLD)
+        {
+            // Si hay suficiente espacio libre, cambiar al estado SPIRAL
+            return RetVal(STATE::SPIRAL, params.MAX_ADV_SPEED, 0.f);
+        }
         else
+        {
+            // Continuar en FORWARD si no hay obstáculos cercanos y no se cumple el umbral de SPIRAL
             return RetVal(STATE::FORWARD, params.MAX_ADV_SPEED, 0.f);
+        }
     }
-    else // no valid readings
+    else
     {
+        // Si no hay lecturas válidas, detener el avance
         qWarning() << "No valid readings. Stopping";
         return RetVal(STATE::FORWARD, 0.f, 0.f);
     }
 }
+
 
 /**
  * @brief Checks if the central part of the provided filtered points is free to proceed and determines the next state.
@@ -160,6 +176,7 @@ SpecificWorker::RetVal SpecificWorker::forward(auto &points)
 
 SpecificWorker::RetVal SpecificWorker::turn(auto &points)
 {
+    qDebug() << "TURN";
     // Instantiate the random number generator and distribution
     static std::mt19937 gen(rd());
     static std::uniform_int_distribution<int> dist(0, 1);
@@ -202,106 +219,71 @@ SpecificWorker::RetVal SpecificWorker::turn(auto &points)
     }
     return RetVal(STATE::TURN, 0.f, sign * params.MAX_ROT_SPEED);
 }
-/*
-SpecificWorker::RetVal SpecificWorker::wall(auto &points)
-{
-    auto distance_to_wall = std::ranges::min_element(points, [](auto &a, auto &b){ return a.distance2d < b.distance2d; });
-    std::cout << "Distancia actual a la pared: " << distance_to_wall->distance2d << std::endl;
-    std::cout << "Umbral de espacio abierto: " << params.ROBOT_WIDTH << std::endl;
 
-    if (distance_to_wall->distance2d > params.ADVANCE_THRESHOLD)
-    {
-        if (distance_to_wall->distance2d > params.ROBOT_WIDTH)
-        {
-            std::cout << "Transición a SPIRAL activada." << std::endl;
-            current_adv_speed = params.MAX_ADV_SPEED * 0.5;
-            current_rot_speed = params.MAX_ROT_SPEED * 0.5;
-            return RetVal(STATE::SPIRAL, current_adv_speed, current_rot_speed);
-        }
-        else
-        {
-            std::cout << "Continuando en WALL, distancia no suficiente para SPIRAL." << std::endl;
-            return RetVal(STATE::WALL, params.MAX_ADV_SPEED, 0.f);
-        }
-    }
-    else if (distance_to_wall->distance2d < params.STOP_THRESHOLD)
-    {
-        std::cout << "Demasiado cerca de la pared, cambiando a TURN." << std::endl;
-        return RetVal(STATE::TURN, 0.f, params.MAX_ROT_SPEED);
-    }
-    else
-    {
-        std::cout << "Manteniendo WALL, condiciones normales." << std::endl;
-        return RetVal(STATE::WALL, params.MAX_ADV_SPEED, 0.f);
-    }
-}*/
 
 SpecificWorker::RetVal SpecificWorker::wall(auto &points)
 {
+    qDebug() << "WALL";
     auto distance_to_wall = std::ranges::min_element(points, [](auto &a, auto &b){ return a.distance2d < b.distance2d; });
-    std::cout << "Distancia actual a la pared: " << distance_to_wall->distance2d << std::endl;
+    std::cout << "Antes de incrementar - STOP_THRESHOLD: " << params.STOP_THRESHOLD << ", ADVANCE_THRESHOLD: " << params.ADVANCE_THRESHOLD << std::endl;
+    // Incrementar el contador cada vez que se llama a WALL
 
-    // Incrementos para los umbrales
-    const float INCREMENT_STEP = 500;  // Paso de incremento (en mm)
+    params.wall_counter++;
+    // Verificar si el contador ha alcanzado un múltiplo de 4
+    if (params.wall_counter == 4)
+    {
+        // Incrementar STOP_THRESHOLD y ADVANCE_THRESHOLD
+        params.STOP_THRESHOLD += params.ROBOT_WIDTH;
+        params.ADVANCE_THRESHOLD += params.ROBOT_WIDTH;
+        params.SPIRAL_THRESHOLD += params.ROBOT_WIDTH;
 
-    // Incrementar umbrales en cada iteración
-    params.STOP_THRESHOLD += INCREMENT_STEP;
-    params.ADVANCE_THRESHOLD += INCREMENT_STEP;
+        std::cout << "Después de incrementar - STOP_THRESHOLD: " << params.STOP_THRESHOLD << ", ADVANCE_THRESHOLD: " << params.ADVANCE_THRESHOLD << std::endl;
+        params.wall_counter = 0;
+    }
 
-    std::cout << "STOP_THRESHOLD: " << params.STOP_THRESHOLD << " ADVANCE_THRESHOLD: " << params.ADVANCE_THRESHOLD << std::endl;
-
-    // Lógica de estados
+    // Lógica de cambio de estado en función de la distancia a la pared
     if (distance_to_wall->distance2d > params.ADVANCE_THRESHOLD)
     {
-        if (distance_to_wall->distance2d > params.ROBOT_WIDTH)
-        {
-            std::cout << "Transición a SPIRAL activada." << std::endl;
-            current_adv_speed = params.MAX_ADV_SPEED * 0.5;
-            current_rot_speed = params.MAX_ROT_SPEED * 0.5;
-            return RetVal(STATE::SPIRAL, current_adv_speed, current_rot_speed);
-        }
-        else
-        {
-            std::cout << "Continuando en WALL, distancia no suficiente para SPIRAL." << std::endl;
-            return RetVal(STATE::WALL, params.MAX_ADV_SPEED, 0.f);
-        }
+        return RetVal(STATE::FORWARD, params.MAX_ADV_SPEED, 0.f);  // Cambiar a FORWARD si la distancia es segura
     }
     else if (distance_to_wall->distance2d < params.STOP_THRESHOLD)
     {
-        std::cout << "Demasiado cerca de la pared, cambiando a TURN." << std::endl;
-        return RetVal(STATE::TURN, 0.f, params.MAX_ROT_SPEED);
+        return RetVal(STATE::TURN, 0.f, params.MAX_ROT_SPEED);  // Cambiar a TURN si está muy cerca de la pared
     }
     else
     {
-        std::cout << "Manteniendo WALL, condiciones normales." << std::endl;
-        return RetVal(STATE::WALL, params.MAX_ADV_SPEED, 0.f);
+        return RetVal(STATE::WALL, params.MAX_ADV_SPEED, 0.f);  // Mantener el estado WALL
     }
 }
-
 
 
 SpecificWorker::RetVal SpecificWorker::spiral(auto &points)
 {
-    // Comprobar si hay un obstáculo cerca y ajustar la velocidad
-    auto min_distance = std::ranges::min_element(points, [](auto &a, auto &b) { return a.distance2d < b.distance2d; });
+    qDebug() << "SPIRAL";
+    static float spiral_adv_speed = 3.0;  // Velocidad de avance inicial
+    static float spiral_rot_speed = 1.0;  // Velocidad de rotación inicial
+    const float MAX_ADV_SPEED = params.MAX_ADV_SPEED; // Velocidad máxima de avance
+    const float MIN_ROT_SPEED = 0.1; // Velocidad mínima de rotación
 
-    if(min_distance != points.end() && min_distance->distance2d < params.STOP_THRESHOLD)
+    // Incrementar la velocidad de avance y disminuir la velocidad de rotación para crear un movimiento en espiral
+    spiral_adv_speed = std::min(spiral_adv_speed + 2.0f, MAX_ADV_SPEED);
+    spiral_rot_speed = std::max(spiral_rot_speed - 0.0005f, MIN_ROT_SPEED);
+
+    // Verificar si hay algún obstáculo cercano en los puntos filtrados
+    auto min_point = std::ranges::min_element(points, [](auto &a, auto &b)
+    { return a.distance2d < b.distance2d; });
+
+    if (min_point != points.end() && min_point->distance2d < params.STOP_THRESHOLD)
     {
+        // Si hay un obstáculo, cambiar al estado TURN
+        //spiral_adv_speed = 10;  // Reiniciar la velocidad de avance para el siguiente uso de SPIRAL
+        //spiral_rot_speed = 0.5;  // Reiniciar la velocidad de rotación
         return RetVal(STATE::TURN, 0.f, params.MAX_ROT_SPEED);
     }
 
-    // Incrementar la velocidad de avance más rápidamente
-    if(current_adv_speed < params.MAX_ADV_SPEED)
-        current_adv_speed += 100;  // Aumentar la velocidad de avance más rápidamente
-
-    // Incrementar la velocidad de rotación
-    if(current_rot_speed < params.MAX_ROT_SPEED)
-        current_rot_speed += 0.4f;  // Aumentar la velocidad de rotación
-
-    return RetVal(STATE::SPIRAL, current_adv_speed, current_rot_speed);
+    // Continuar en modo SPIRAL
+    return RetVal(STATE::SPIRAL, spiral_adv_speed, spiral_rot_speed);
 }
-
-
 
 
 
