@@ -66,6 +66,8 @@ class SpecificWorker : public GenericWorker
             std::string LIDAR_NAME_HIGH = "helios";
             QRectF GRID_MAX_DIM{-5000, 2500, 10000, -5000};
             int wall_counter = 0;
+            //float WALL_FOLLOW_DISTANCE = ROBOT_WIDTH * 1.5; // Distancia inicial a mantener de la pared
+
         };
         Params params;
 

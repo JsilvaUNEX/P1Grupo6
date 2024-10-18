@@ -22,7 +22,7 @@
 /**
 * \brief Default constructor
 */
-SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorker(tprx)
+SpecificWorker::SpecificWorker(TuplePrx tprx, bool startup_check) : GenericWorker(tprx), state(STATE::SPIRAL)
 {
 	this->startup_check_flag = startup_check;
     //	QLoggingCategory::setFilterRules("*.debug=false\n");
@@ -63,6 +63,8 @@ void SpecificWorker::initialize()
 		#endif
 
 		this->setPeriod(STATES::Compute, 100);
+	    state = STATE::SPIRAL;
+
 	}
 }
 
@@ -140,14 +142,14 @@ SpecificWorker::RetVal SpecificWorker::forward(auto &points)
 
         if (min_point != points.end() && min_point->distance2d < params.STOP_THRESHOLD)
         {
-            // Si detecta un obstáculo cercano, cambiar a estado TURN
+            // Si detecta un obtáculo cercano, cambiar a estado TURN
             return RetVal(STATE::WALL, 0.f, 0.f);
         }
-        else if (min_point->distance2d > params.SPIRAL_THRESHOLD)
+       /* else if (min_point->distance2d > params.SPIRAL_THRESHOLD)
         {
             // Si hay suficiente espacio libre, cambiar al estado SPIRAL
             return RetVal(STATE::SPIRAL, params.MAX_ADV_SPEED, 0.f);
-        }
+        } */
         else
         {
             // Continuar en FORWARD si no hay obstáculos cercanos y no se cumple el umbral de SPIRAL
@@ -233,9 +235,10 @@ SpecificWorker::RetVal SpecificWorker::wall(auto &points)
     if (params.wall_counter == 4)
     {
         // Incrementar STOP_THRESHOLD y ADVANCE_THRESHOLD
-        params.STOP_THRESHOLD += params.ROBOT_WIDTH;
-        params.ADVANCE_THRESHOLD += params.ROBOT_WIDTH;
-        params.SPIRAL_THRESHOLD += params.ROBOT_WIDTH;
+
+
+       // params.STOP_THRESHOLD += params.ROBOT_WIDTH;
+        //params.ADVANCE_THRESHOLD += params.ROBOT_WIDTH;
 
         std::cout << "Después de incrementar - STOP_THRESHOLD: " << params.STOP_THRESHOLD << ", ADVANCE_THRESHOLD: " << params.ADVANCE_THRESHOLD << std::endl;
         params.wall_counter = 0;
@@ -267,20 +270,23 @@ SpecificWorker::RetVal SpecificWorker::spiral(auto &points)
 
     // Incrementar la velocidad de avance y disminuir la velocidad de rotación para crear un movimiento en espiral
     spiral_adv_speed = std::min(spiral_adv_speed + 2.0f, MAX_ADV_SPEED);
-    spiral_rot_speed = std::max(spiral_rot_speed - 0.0005f, MIN_ROT_SPEED);
+    spiral_rot_speed = std::max(spiral_rot_speed - 0.00075f, MIN_ROT_SPEED);
 
     // Verificar si hay algún obstáculo cercano en los puntos filtrados
     auto min_point = std::ranges::min_element(points, [](auto &a, auto &b)
     { return a.distance2d < b.distance2d; });
 
-    if (min_point != points.end() && min_point->distance2d < params.STOP_THRESHOLD)
+    /*if (min_point != points.end() && min_point->distance2d < params.STOP_THRESHOLD)
     {
         // Si hay un obstáculo, cambiar al estado TURN
         //spiral_adv_speed = 10;  // Reiniciar la velocidad de avance para el siguiente uso de SPIRAL
         //spiral_rot_speed = 0.5;  // Reiniciar la velocidad de rotación
         return RetVal(STATE::TURN, 0.f, params.MAX_ROT_SPEED);
     }
-
+*/
+     if(min_point != points.end() && min_point->distance2d < params.STOP_THRESHOLD){
+        return RetVal(STATE::WALL, params.MAX_ADV_SPEED, 0.f);
+    }
     // Continuar en modo SPIRAL
     return RetVal(STATE::SPIRAL, spiral_adv_speed, spiral_rot_speed);
 }
