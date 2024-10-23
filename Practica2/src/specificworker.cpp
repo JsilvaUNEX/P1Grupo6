@@ -195,9 +195,10 @@ SpecificWorker::RobotSpeed SpecificWorker::state_machine(const RoboCompVisualEle
  * @return A `RetVal` tuple consisting of the state (`FORWARD` or `TURN`), speed, and rotation.
  */
  // State function to track a person
-SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TObject &person)
+
+/*SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TObject &person)
 {
-    //qDebug() << __FUNCTION__;
+    qDebug() << "TRACK MODE";
     // variance of the gaussian function is set by the user giving a point xset where the function must be yset, and solving for s
 //    auto gaussian_break = [](float x) -> float
 //    {
@@ -209,17 +210,64 @@ SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TO
 //        return (float)exp(-x*x/s);
 //    };
 
+    //Distancia a la persona
     auto distance = std::hypot(std::stof(person.attributes.at("x_pos")), std::stof(person.attributes.at("y_pos")));
     lcdNumber_dist_to_person->display(distance);
 
     // check if the distance to the person is lower than a threshold
-    if(distance < params.PERSON_MIN_DIST)
-    {   qWarning() << __FUNCTION__ << "Distance to person lower than threshold"; return RetVal(STATE::WAIT, 0.f, 0.f);}
+    if(distance < params.PERSON_MIN_DIST) {
+        qWarning() << __FUNCTION__ << "Distance to person lower than threshold";
+        return RetVal(STATE::WAIT, 0.f, 0.f);
+    }
 
     /// TRACK   PUT YOUR CODE HERE
+    // Calcular el ángulo de rotación hacia la persona
+    float angle_to_person = atan2(std::stof(person.attributes.at("y_pos")), std::stof(person.attributes.at("x_pos")));
+    qDebug() << "Angle to person: " << angle_to_person;
+    qDebug() << "Distance to person: " << distance;
+    // Enviar los comandos al robot: velocidad lineal basada en la distancia y rotación basada en el ángulo
+    omnirobot_proxy->setSpeedBase(std::min(params.MAX_ADV_SPEED, distance), 0, angle_to_person);
 
     return RetVal(STATE::TRACK, 0, 0);
+}*/
+
+SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TObject &person)
+{
+    qDebug() << "TRACK MODE";
+
+    // Distancia a la persona
+    auto distance = std::hypot(std::stof(person.attributes.at("x_pos")), std::stof(person.attributes.at("y_pos")));
+    lcdNumber_dist_to_person->display(distance);
+
+    // Verificar si la distancia a la persona es menor que el umbral mínimo
+    if (distance < params.PERSON_MIN_DIST) {
+        qWarning() << __FUNCTION__ << "Distance to person lower than threshold";
+        return RetVal(STATE::WAIT, 0.f, 0.f);  // Estado WAIT si está demasiado cerca
+    }
+
+    // Si no hay datos de la persona (deja de verla), el robot debe comenzar a girar
+    if(person.attributes.empty()) {
+        qWarning() << __FUNCTION__ << "Person not visible, starting search rotation.";
+        // Velocidad de giro para buscar a la persona (ajustamos solo el giro)
+        omnirobot_proxy->setSpeedBase(0.f, 0.f, params.MAX_ROT_SPEED / 2);  // Gira lentamente buscando
+        return RetVal(STATE::TRACK, 0.f, 0.f);  // Sigue en TRACK buscando
+    }
+
+    // Calcular el ángulo hacia la persona
+    float angle_to_person = atan2(std::stof(person.attributes.at("y_pos")), std::stof(person.attributes.at("x_pos")));
+
+    // Ajustar la velocidad para que el robot avance hacia la persona y mantenga la distancia mínima
+    float linear_speed = 0.0;
+    if (distance > params.PERSON_MIN_DIST) {
+        linear_speed = std::min(params.MAX_ADV_SPEED, distance - params.PERSON_MIN_DIST);  // Avanza hacia la persona
+    }
+
+    // Ajustar la velocidad angular para orientar el robot hacia la persona
+    omnirobot_proxy->setSpeedBase(linear_speed, 0.f, angle_to_person);  // Enviar comandos de velocidad y rotación
+
+    return RetVal(STATE::TRACK, linear_speed, angle_to_person);  // Continúa en TRACK
 }
+
 //
 SpecificWorker::RetVal SpecificWorker::wait(const RoboCompVisualElementsPub::TObject &person)
 {

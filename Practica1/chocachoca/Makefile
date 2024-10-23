@@ -57,18 +57,18 @@ RM = /snap/clion/296/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca
+CMAKE_SOURCE_DIR = /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca
+CMAKE_BINARY_DIR = /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/snap/clion/296/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/CMakeFiles /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/CMakeFiles /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -162,17 +162,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src
+# Target rules for targets named ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src
 
 # Build rule for target.
-ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src
-.PHONY : ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src
+ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src
+.PHONY : ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src
 
 # fast build rule for target.
-ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src.dir/build.make src/CMakeFiles/ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src.dir/build
-.PHONY : ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src/fast
+ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src.dir/build.make src/CMakeFiles/ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src.dir/build
+.PHONY : ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src/fast
 
 #=============================================================================
 # Target rules for targets named chocachoca
@@ -225,7 +225,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... ICES__home_usuario_robocomp_components_P1Grupo6_Practica1_beta-robotica-class_chocachoca_src"
+	@echo "... ICES__home_robocomp_robocomp_components_P1Grupo6_Practica1_chocachoca_src"
 	@echo "... chocachoca_autogen"
 	@echo "... chocachoca_autogen_timestamp_deps"
 	@echo "... chocachoca"

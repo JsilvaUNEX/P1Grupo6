@@ -33,10 +33,12 @@
 #include <expected>
 #include <random>
 #include <doublebuffer_sync/doublebuffer_sync.h>
+#include  <OmniRobot.h>
+
 //#include "room.h"
 //#include "room_detector.h"
 //#include "dbscan.h"
-#include "visibility_graph.h"
+//#include "visibility_graph.h"
 #include <locale>
 
 class SpecificWorker : public GenericWorker
@@ -68,6 +70,10 @@ class SpecificWorker : public GenericWorker
             float LIDAR_FRONT_SECTION = 0.2; // rads, aprox 12 degrees
             // person
             float PERSON_MIN_DIST = 800; // mm
+
+            //Variables nuevas
+            float MIN_ROT_THRESHOLD = 0.1; // Rad, valor mínimo para que el robot considere un cambio de dirección
+            float PERSON_MAX_DIST = 3000; // Distancia máxima en mm
 
             std::string LIDAR_NAME_LOW = "bpearl";
             std::string LIDAR_NAME_HIGH = "helios";

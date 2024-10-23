@@ -1,12 +1,12 @@
-/home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/chocachoca_autogen/EWIEGA46WW/moc_genericmonitor.cpp: /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/genericmonitor.h \
-  /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/chocachoca_autogen/moc_predefs.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/CommonBehavior.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/GenericBase.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/Lidar3D.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/OmniRobot.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/config.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/genericworker.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/ui_mainUI.h \
+/home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src/chocachoca_autogen/EWIEGA46WW/moc_genericmonitor.cpp: /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src/genericmonitor.h \
+  /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src/chocachoca_autogen/moc_predefs.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/chocachoca/src/CommonBehavior.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/chocachoca/src/GenericBase.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/chocachoca/src/Lidar3D.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/chocachoca/src/OmniRobot.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/chocachoca/src/config.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/chocachoca/src/genericworker.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica1/chocachoca/src/ui_mainUI.h \
   /home/usuario/robocomp_ws/src/robocomp/robocomp_core/classes/grafcetStep/GRAFCETStep.h \
   /home/usuario/robocomp_ws/src/robocomp/robocomp_core/classes/qlog/qlog.h \
   /usr/include/GL/gl.h \

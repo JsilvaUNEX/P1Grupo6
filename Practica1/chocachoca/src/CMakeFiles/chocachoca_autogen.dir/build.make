@@ -53,10 +53,10 @@ RM = /snap/clion/296/bin/cmake/linux/x64/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca
+CMAKE_SOURCE_DIR = /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca
+CMAKE_BINARY_DIR = /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca
 
 # Utility rule file for chocachoca_autogen.
 
@@ -71,9 +71,9 @@ src/CMakeFiles/chocachoca_autogen: src/chocachoca_autogen/timestamp
 src/chocachoca_autogen/timestamp: /usr/lib/qt6/libexec/moc
 src/chocachoca_autogen/timestamp: /usr/lib/qt6/libexec/uic
 src/chocachoca_autogen/timestamp: src/CMakeFiles/chocachoca_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target chocachoca"
-	cd /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src && /snap/clion/296/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/CMakeFiles/chocachoca_autogen.dir/AutogenInfo.json ""
-	cd /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src && /snap/clion/296/bin/cmake/linux/x64/bin/cmake -E touch /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/chocachoca_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target chocachoca"
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src && /snap/clion/296/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src/CMakeFiles/chocachoca_autogen.dir/AutogenInfo.json ""
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src && /snap/clion/296/bin/cmake/linux/x64/bin/cmake -E touch /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src/chocachoca_autogen/timestamp
 
 chocachoca_autogen: src/CMakeFiles/chocachoca_autogen
 chocachoca_autogen: src/chocachoca_autogen/timestamp
@@ -85,10 +85,10 @@ src/CMakeFiles/chocachoca_autogen.dir/build: chocachoca_autogen
 .PHONY : src/CMakeFiles/chocachoca_autogen.dir/build
 
 src/CMakeFiles/chocachoca_autogen.dir/clean:
-	cd /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src && $(CMAKE_COMMAND) -P CMakeFiles/chocachoca_autogen.dir/cmake_clean.cmake
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src && $(CMAKE_COMMAND) -P CMakeFiles/chocachoca_autogen.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/chocachoca_autogen.dir/clean
 
 src/CMakeFiles/chocachoca_autogen.dir/depend:
-	cd /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src /home/usuario/robocomp/components/P1Grupo6/Practica1/beta-robotica-class/chocachoca/src/CMakeFiles/chocachoca_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src /home/robocomp/robocomp/components/P1Grupo6/Practica1/chocachoca/src/CMakeFiles/chocachoca_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/CMakeFiles/chocachoca_autogen.dir/depend
 

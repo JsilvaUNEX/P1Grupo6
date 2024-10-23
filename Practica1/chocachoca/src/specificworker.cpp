@@ -312,7 +312,7 @@ SpecificWorker::RetVal SpecificWorker::wall(auto &filtered_points)
         qDebug() << "CONTADOR DE GIROS";
         qDebug() << params.CONT_TURNS;
         if (params.CONT_TURNS == 4) {
-            qDebug() << "TAMANO DEL PITO";
+            qDebug() << "UMBRAL DE DISTANCIA A LA PARED: ";
             qDebug() << params.WALL_MIN_DISTANCE;
             params.WALL_MIN_DISTANCE = params.WALL_MIN_DISTANCE + 550;  // Aumentar STOP_THRESHOLD
             params.CONT_TURNS=0;
