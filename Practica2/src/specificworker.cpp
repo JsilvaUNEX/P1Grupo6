@@ -72,7 +72,7 @@ void SpecificWorker::initialize()
 
 	}
 }
-void SpecificWorker::compute()
+/*void SpecificWorker::compute()
 {
      //read bpearl (lower) lidar and draw
     auto ldata = read_lidar_bpearl();
@@ -104,6 +104,61 @@ void SpecificWorker::compute()
     lcdNumber_adv->display(adv);
     lcdNumber_rot ->display(rot);
 }
+*/
+
+void SpecificWorker::compute()
+{
+    // Leer y procesar datos del LiDAR
+    auto ldata = read_lidar_bpearl();
+    if (ldata.points.empty())
+    {
+        qWarning() << __FUNCTION__ << "Empty bpearl lidar data";
+        return;
+    }
+    draw_lidar(ldata.points, &viewer->scene);
+
+    auto ldata_helios = read_lidar_helios();
+    if (ldata_helios.points.empty())
+    {
+        qWarning() << __FUNCTION__ << "Empty helios lidar data";
+        return;
+    }
+    draw_lidar(ldata_helios.points, &viewer->scene);
+
+    // Verificar si hay nuevos datos de YOLO en el buffer
+    auto [data_] = buffer.read_first();
+    if (!data_.has_value())
+    {
+        // Si no hay datos, llamar a state_machine sin persona detectada (pasando un expected vacío)
+        std::expected<RoboCompVisualElementsPub::TObject, std::string> no_person;
+        const auto &[adv, rot] = state_machine(no_person);
+
+        // Aplicar movimiento al robot en estado de búsqueda
+        try { omnirobot_proxy->setSpeedBase(0.f, adv, rot); }
+        catch (const Ice::Exception &e) { std::cout << e << std::endl; }
+
+        lcdNumber_adv->display(adv);
+        lcdNumber_rot->display(rot);
+
+        return;
+    }
+
+    // Obtener datos de detección de personas y dibujar en el visor
+    RoboCompVisualElementsPub::TData data = data_.value();
+    auto person = find_person_in_data(data.objects);
+
+    // Llamar a state_machine con datos de persona, si están disponibles
+    const auto &[adv, rot] = state_machine(person);
+
+    // Mover el robot
+    try { omnirobot_proxy->setSpeedBase(0.f, adv, rot); }
+    catch (const Ice::Exception &e) { std::cout << e << std::endl; }
+
+    lcdNumber_adv->display(adv);
+    lcdNumber_rot->display(rot);
+}
+
+
 
 //////////////////////////////////////////////////////////////////
 /// YOUR CODE HERE
@@ -157,32 +212,49 @@ SpecificWorker::find_person_in_data(const std::vector<RoboCompVisualElementsPub:
 /// STATE  MACHINE
 //////////////////////////////////////////////////////////////////
 // State machine to track a person
-SpecificWorker::RobotSpeed SpecificWorker::state_machine(const RoboCompVisualElementsPub::TObject &person)
+SpecificWorker::RobotSpeed SpecificWorker::state_machine(std::expected<RoboCompVisualElementsPub::TObject, std::string> &person)
 {
-    // call the appropriate state function
     RetVal res;
-    if(pushButton_stop->isChecked())    // stop if buttom is pressed
-        state = STATE::STOP;
 
-    switch(state)
+    // Si se detecta una persona en SEARCH, cambia inmediatamente a TRACK
+    if (state == STATE::SEARCH && person.has_value())
+    {
+        state = STATE::TRACK;
+    }
+    // Si no se detecta la persona en otros estados, cambia a SEARCH
+    else if (state != STATE::SEARCH && !person.has_value())
+    {
+        state = STATE::SEARCH;
+    }
+
+    // Cambia el estado y maneja cada caso
+    switch (state)
     {
         case STATE::TRACK:
-            res = track(person);
-            label_state->setText("TRACK");
-            break;
+            res = track(person.value());
+        label_state->setText("TRACK");
+        break;
         case STATE::WAIT:
-            res = wait(person);
-            label_state->setText("WAIT");
-            break;
+            res = wait(person.value());
+        label_state->setText("WAIT");
+        break;
         case STATE::STOP:
             res = stop();
-            label_state->setText("STOP");
-            break;
+        label_state->setText("STOP");
+        break;
+        case STATE::SEARCH:
+            res = search();
+        label_state->setText("SEARCH");
+        break;
     }
+
     auto &[st, speed, rot] = res;
-    state = st;
+    state = st;  // Actualizar el estado con el resultado de la transición
     return {speed, rot};
 }
+
+
+
 /**
  * Analyzes the filtered points to determine whether to continue moving forward or to stop and turn.
  *
@@ -198,49 +270,12 @@ SpecificWorker::RobotSpeed SpecificWorker::state_machine(const RoboCompVisualEle
 
 
 
-/*SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TObject &person)
-{
-    qDebug() << "TRACK MODE";
-
-    // Obtener la posición de la persona (asumiendo que 'x_pos' y 'y_pos' son las coordenadas de la persona)
-    float person_x = std::stof(person.attributes.at("x_pos"));
-    float person_y = std::stof(person.attributes.at("y_pos"));
-
-    // Calcular la distancia a la persona
-    auto distance = std::hypot(person_x, person_y);
-    lcdNumber_dist_to_person->display(distance);
-
-    // Verificar si la distancia a la persona es menor que el umbral
-    if (distance < params.PERSON_MIN_DIST) {
-        qWarning() << __FUNCTION__ << "Distance to person lower than threshold";
-        omnirobot_proxy->setSpeedBase(0, 0, 0);  // Detener el robot
-        return RetVal(STATE::WAIT, 0.f, 0.f);  // Estado WAIT si está demasiado cerca
-    }
-
-    // Calcular el ángulo hacia la persona (suponiendo que el robot está en el origen [0, 0])
-    float angle_to_person = atan2(person_x, person_y);
-    qDebug() << "Angle to person: " << angle_to_person;
-    return RetVal(STATE::TRACK, 0.f, angle_to_person);  // Continuar girando
-
-}
-*/
-
 SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TObject &person)
 {
     qDebug() << "TRACK MODE";
-/*
-    // Verificar si las coordenadas de la persona están disponibles
-    auto it_x = person.attributes.find("x_pos");
-    auto it_y = person.attributes.find("y_pos");
 
-    if (it_x == person.attributes.end() || it_y == person.attributes.end()) {
-        qWarning() << "Person not found, rotating to search...";
-        // No se ha encontrado a la persona, girar sobre el eje Z buscando
-        float search_rotation_speed = params.MAX_ROT_SPEED * 0.5;  // Ajustar la velocidad de rotación para la búsqueda
-        omnirobot_proxy->setSpeedBase(0, 0, search_rotation_speed);
-        return RetVal(STATE::TRACK, 0.f, 0.f);  // Continuar buscando
-    }
-*/
+
+
     // Obtener la posición de la persona (asumiendo que 'x_pos' y 'y_pos' son las coordenadas de la persona)
     float person_x = std::stof(person.attributes.at("x_pos"));
     float person_y = std::stof(person.attributes.at("y_pos"));
@@ -280,7 +315,7 @@ SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TO
     float rotation_velocity = 0.0f;
 
     if (std::fabs(angle_error) > min_rotation_threshold) {
-        rotation_velocity = std::clamp(angle_error * params.MAX_ROT_SPEED, -max_rotation_velocity, max_rotation_velocity);
+        rotation_velocity = std::clamp(angle_error * (params.MAX_ROT_SPEED * 1.4f) , -max_rotation_velocity , max_rotation_velocity);
     }
 
     // Ajustar la velocidad del robot
@@ -289,6 +324,65 @@ SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TO
     return RetVal(STATE::TRACK, velocity, angle_to_person);  // Continuar tracking
 }
 
+/*
+SpecificWorker::RetVal SpecificWorker::track(const RoboCompVisualElementsPub::TObject &person)
+{
+    qDebug() << "TRACK MODE";
+
+    float person_x = std::stof(person.attributes.at("x_pos"));
+    float person_y = std::stof(person.attributes.at("y_pos"));
+
+    auto distance = std::hypot(person_x, person_y);
+    lcdNumber_dist_to_person->display(distance);
+    float angle_to_person = atan2(person_x, person_y);
+    qDebug() << "Angle to person: " << angle_to_person;
+
+    if (distance < params.PERSON_MIN_DIST) {
+        omnirobot_proxy->setSpeedBase(0, 0, 0);
+        return RetVal(STATE::WAIT, 0.f, 0.f);
+    }
+
+    const double xset = 0.8;
+    const double yset = 0.5;
+    double s = -(xset * xset) / log(yset);
+    auto gaussian_break = [s](float x) -> float {
+        return static_cast<float>(exp(-x * x / s));
+    };
+
+    float max_rotation_velocity = params.MAX_ROT_SPEED * 0.5;
+    float rotation_gain = 0.8;
+    float rotation_velocity = std::clamp(angle_to_person * max_rotation_velocity * rotation_gain, -max_rotation_velocity, max_rotation_velocity);
+
+    float initial_max_speed = 300.0f;
+    float adjusted_max_adv_speed = std::min(params.MAX_ADV_SPEED, static_cast<float>(initial_max_speed + distance * 0.3));
+
+
+    float advance_speed = adjusted_max_adv_speed * gaussian_break(rotation_velocity / max_rotation_velocity);
+
+    omnirobot_proxy->setSpeedBase(advance_speed, 0, rotation_velocity);
+
+    return RetVal(STATE::TRACK, advance_speed, rotation_velocity);
+}
+
+*/
+
+SpecificWorker::RetVal SpecificWorker::search()
+{
+    qDebug() << "SEARCH MODE";
+
+    // Leer y procesar los datos del LiDAR
+    auto lidar_data = read_lidar_bpearl();
+    if (lidar_data.points.empty()) {
+        qWarning() << "SEARCH: No LIDAR data available";
+        return RetVal(STATE::SEARCH, 0.f, -params.MAX_ROT_SPEED * 0.3);  // Gira lentamente en su lugar si no hay datos de LiDAR
+    }
+
+    // Girar sobre su eje lentamente en busca de la persona
+    float slow_rotation_speed = -params.MAX_ROT_SPEED * 0.3;  // Velocidad de rotación lenta
+    omnirobot_proxy->setSpeedBase(0, 0, slow_rotation_speed);  // Girar en su lugar
+
+    return RetVal(STATE::SEARCH, 0.f, slow_rotation_speed);  // Mantiene el estado SEARCH con giro lento
+}
 
 
 

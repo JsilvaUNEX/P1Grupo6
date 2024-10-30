@@ -85,15 +85,17 @@ class SpecificWorker : public GenericWorker
         // state machine
         enum class STATE
         {
-            TRACK, STOP, WAIT
+            TRACK, STOP, WAIT, SEARCH
         };
         STATE state = STATE::TRACK;
         using RetVal = std::tuple<STATE, float, float>;
         using RobotSpeed = std::tuple<float, float>;
         RetVal track(const RoboCompVisualElementsPub::TObject &person);
+        RetVal search();
         RetVal wait(const RoboCompVisualElementsPub::TObject &person);
         RetVal stop();
-        RobotSpeed state_machine(const RoboCompVisualElementsPub::TObject &person);
+        RobotSpeed state_machine(std::expected<RoboCompVisualElementsPub::TObject, std::string> &person);
+
 
         // lidar
         RoboCompLidar3D::TData read_lidar_bpearl();
