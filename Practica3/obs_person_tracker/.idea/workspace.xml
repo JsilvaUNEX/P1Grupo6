@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-G &quot;Unix Makefiles&quot;" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0eccb99b-d0bc-48ba-814c-5003067951bb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DoxyFile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README-RCNODE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/config.new" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeListsSpecific.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commonbehaviorI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commonbehaviorI.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbscan.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dbscan.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericmonitor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericmonitor.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericworker.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/genericworker.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mainUI.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mpc.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mpc.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/room.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/room.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/room_detector.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/room_detector.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specificmonitor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specificmonitor.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specificworker.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specificworker.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visibility_graph.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visibility_graph.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualelementsI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualelementsI.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualelementspubI.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/visualelementspubI.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/statemachine.smdsl" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2024" />
+    <option name="minorVersion" value="2.2" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2oTtQ1wmO5PHpx3srii3J9p58u2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/robocomp/robocomp/components/P1Grupo6/Practica3/obs_person_tracker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0eccb99b-d0bc-48ba-814c-5003067951bb" name="Changes" comment="" />
+      <created>1730905373553</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730905373553</updated>
+      <workItem from="1730905374600" duration="5616000" />
+      <workItem from="1731511265893" duration="1920000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+</project>
