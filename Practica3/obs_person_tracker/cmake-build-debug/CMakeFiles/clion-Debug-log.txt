@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /home/robocomp/robocomp/components/P1Grupo6/Practica3/obs_person_tracker Select CMakeLists.txt
