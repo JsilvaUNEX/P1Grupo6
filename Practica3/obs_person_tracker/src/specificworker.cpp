@@ -106,6 +106,10 @@ void SpecificWorker::compute()
     /// find obstacles
     auto obstacles = rc::dbscan(bpearl, params.ROBOT_WIDTH, 2);
 
+    /// enlarge obstacles
+    obstacles = enlarge_polygons(obstacles, params.ROBOT_WIDTH/2);
+    draw_obstacles(obstacles, &viewer->scene, Qt::darkMagenta);
+
     /// check if there is new YOLO data in buffer
     std::expected<RoboCompVisualElementsPub::TObject, std::string> tp_person = std::unexpected("No person found");
     auto [data_] = buffer.read_first();
@@ -116,9 +120,7 @@ void SpecificWorker::compute()
     if(tp_person)
         obstacles = find_person_polygon_and_remove(tp_person.value(), obstacles);
 
-    /// enlarge obstacles
-    obstacles = enlarge_polygons(obstacles, params.ROBOT_WIDTH);
-    draw_obstacles(obstacles, &viewer->scene, Qt::darkMagenta);
+
 
     /// get walls as polygons
     std::vector<QPolygonF> wall_obs = get_walls_as_polygons(lines, params.ROBOT_WIDTH/4);
