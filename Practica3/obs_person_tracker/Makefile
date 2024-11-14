@@ -57,7 +57,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker
+CMAKE_SOURCE_DIR = /home/usuario/robocomp/components/P1Grupo6/Practica3/obs_person_tracker
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/usuario/robocomp/components/P1Grupo6/Practica3/obs_person_tracker

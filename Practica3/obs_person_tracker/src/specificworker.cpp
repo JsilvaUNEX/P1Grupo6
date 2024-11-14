@@ -3,55 +3,7 @@
  *
  *    This file is part of RoboComp
  *
- *    RoboComp is free software: you can redistribute it and/or modify    /// check if there is new YOLO data in buffer
-    std::expected<RoboCompVisualElementsPub::TObject, std::string> tp_person = std::unexpected("No person found");
-    auto [data_] = buffer.read_first();
-    if(data_.has_value())
-        tp_person = find_person_in_data(data_.value().objects);
-
-    /// remove person from obstacles
-    if(tp_person)
-        obstacles = find_person_polygon_and_remove(tp_person.value(), obstacles);
-
-    /// enlarge obstacles
-    obstacles = enlarge_polygons(obstacles, params.ROBOT_WIDTH);
-    draw_obstacles(obstacles, &viewer->scene, Qt::darkMagenta);
-
-    /// get walls as polygons
-    std::vector<QPolygonF> wall_obs = get_walls_as_polygons(lines, params.ROBOT_WIDTH/4);
-    obstacles.insert(obstacles.end(), wall_obs.begin(), wall_obs.end());
-
-    /// compute an obstacle free path
-    if(tp_person)
-    {
-        Eigen::Vector2f goal{std::stof(tp_person.value().attributes.at("x_pos")), std::stof(tp_person.value().attributes.at("y_pos"))};
-        std::vector<Eigen::Vector2f> path = rc::VisibilityGraph().generate_path(Eigen::Vector2f::Zero(),
-                                                                                goal,
-                                                                                obstacles,
-                                                                                params.ROBOT_WIDTH / 2,
-                                                                                nullptr);
-        draw_path_to_person(path, &viewer->scene);
-    }
-
-    // call state machine to track person
-    const auto &[adv, rot] = state_machine(tp_person);
-
-    // plot on UI
-    if(tp_person)
-    {
-        float d = std::hypot(std::stof(tp_person.value().attributes.at("x_pos")),
-                                 std::stof(tp_person.value().attributes.at("y_pos")));
-        plot_distance(running_average(d) - params.PERSON_MIN_DIST);
-        lcdNumber_dist_to_person->display(d);
-        lcdNumber_angle_to_person->display(atan2(std::stof(tp_person.value().attributes.at("x_pos")),
-                                                 std::stof(tp_person.value().attributes.at("y_pos"))));
-    }
-    lcdNumber_adv->display(adv);
-    lcdNumber_rot ->display(rot);
-
-    // move the robot
-    try{ omnirobot_proxy->setSpeedBase(0.f, adv, rot); }
-    catch(const Ice::Exception &e){std::cout << e << std::endl;}
+ *    RoboComp is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
  *    the Free Software Foundation, either version 3 of the License, or
  *    (at your option) any later version.
