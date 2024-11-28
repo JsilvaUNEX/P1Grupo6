@@ -120,15 +120,12 @@ void SpecificWorker::compute()
     if(tp_person)
         obstacles = find_person_polygon_and_remove(tp_person.value(), obstacles);
 
-
-
     /// get walls as polygons
     std::vector<QPolygonF> wall_obs = get_walls_as_polygons(lines, params.ROBOT_WIDTH/4);
     obstacles.insert(obstacles.end(), wall_obs.begin(), wall_obs.end());
 
-    std::vector<Eigen::Vector2f> path;
-
     /// compute an obstacle free path
+    std::vector<Eigen::Vector2f> path;
     if(tp_person)
     {
         Eigen::Vector2f goal{std::stof(tp_person.value().attributes.at("x_pos")), std::stof(tp_person.value().attributes.at("y_pos"))};
@@ -381,11 +378,10 @@ SpecificWorker::RetVal SpecificWorker::track(const vector<Eigen::Vector2f> &path
     if(path.empty())
     { /* qWarning() << __FUNCTION__ << "No path found"; */ return RetVal(STATE::SEARCH, 0.f, 0.f); }
 
-    //auto distance = std::hypot(std::stof(person.value().attributes.at("x_pos")), std::stof(person.value().attributes.at("y_pos")));
     auto distance = std::accumulate(path.begin() + 1, path.end(), 0.f, [](auto a, auto b){
-        static Eigen::Vector2f ant{0, 0};
-        auto aux = a + (b - ant).norm();
-        ant = b;
+        static Eigen::Vector2f pre{0, 0};
+        auto aux = a + (b - pre).norm();
+        pre = b;
         return aux;});
 
     lcdNumber_dist_to_person->display(distance);
@@ -395,7 +391,6 @@ SpecificWorker::RetVal SpecificWorker::track(const vector<Eigen::Vector2f> &path
     { qWarning() << __FUNCTION__ << "Distance to person lower than threshold"; return RetVal(STATE::WAIT, 0.f, 0.f);}
 
     // angle error is the angle between the robot and the person. It has to be brought to zero
-    //float angle_error = atan2(stof(person.value().attributes.at("x_pos")), stof(person.value().attributes.at("y_pos")));
     float angle_error = atan2(path.at(1).x(), path.at(1).y());
     float rot_speed = params.k1 * angle_error + params.k2 * (angle_error-ant_angle_error);
     ant_angle_error = angle_error;
@@ -414,11 +409,10 @@ SpecificWorker::RetVal SpecificWorker::wait(const vector<Eigen::Vector2f> &path)
     {  qWarning() << __FUNCTION__ << "No path found"; return RetVal(STATE::TRACK, 0.f, 0.f); }
 
     // check if the person is further than a threshold
-    //if(std::hypot(std::stof(person.value().attributes.at("x_pos")), std::stof(person.value().attributes.at("y_pos"))) > params.PERSON_MIN_DIST + 100)
     if(std::accumulate(path.begin() + 1, path.end(), 0.f, [](auto a, auto b)
-        { static Eigen::Vector2f ant{0, 0};
-        auto aux = a + (b - ant).norm();
-        ant = b;
+        { static Eigen::Vector2f pre{0, 0};
+        auto aux = a + (b - pre).norm();
+        pre = b;
         return aux;})
         > params.PERSON_MIN_DIST + 100)
         return RetVal(STATE::TRACK, 0.f, 0.f);
