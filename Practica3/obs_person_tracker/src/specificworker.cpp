@@ -378,11 +378,11 @@ SpecificWorker::RetVal SpecificWorker::track(const vector<Eigen::Vector2f> &path
     if(path.empty())
     { /* qWarning() << __FUNCTION__ << "No path found"; */ return RetVal(STATE::SEARCH, 0.f, 0.f); }
 
-    auto distance = std::accumulate(path.begin() + 1, path.end(), 0.f, [](auto a, auto b){
-        static Eigen::Vector2f pre{0, 0};
-        auto aux = a + (b - pre).norm();
-        pre = b;
-        return aux;});
+    auto distance = std::accumulate(path.begin() + 1, path.end(), 0.f, [](auto a, auto b)
+        {static Eigen::Vector2f prev{0, 0};
+        auto sum = a + (b - prev).norm(); prev = b;
+        return sum;
+        });
 
     lcdNumber_dist_to_person->display(distance);
 
@@ -409,12 +409,9 @@ SpecificWorker::RetVal SpecificWorker::wait(const vector<Eigen::Vector2f> &path)
     {  qWarning() << __FUNCTION__ << "No path found"; return RetVal(STATE::TRACK, 0.f, 0.f); }
 
     // check if the person is further than a threshold
+    int thrhold = params.PERSON_MIN_DIST + 250;
     if(std::accumulate(path.begin() + 1, path.end(), 0.f, [](auto a, auto b)
-        { static Eigen::Vector2f pre{0, 0};
-        auto aux = a + (b - pre).norm();
-        pre = b;
-        return aux;})
-        > params.PERSON_MIN_DIST + 100)
+    { static Eigen::Vector2f prev{0, 0}; auto sum = a + (b - prev).norm(); prev = b;return sum;})> thrhold)
         return RetVal(STATE::TRACK, 0.f, 0.f);
 
     return RetVal(STATE::WAIT, 0.f, 0.f);
