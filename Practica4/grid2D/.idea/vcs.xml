@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../../../../../../../../robocomp/robocomp/classes/grafcetStep" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../../../../../../robocomp/robocomp/components/P1Grupo6" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
   </component>
 </project>
