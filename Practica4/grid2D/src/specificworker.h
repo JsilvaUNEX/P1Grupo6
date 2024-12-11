@@ -27,7 +27,7 @@
 #ifndef SPECIFICWORKER_H
 #define SPECIFICWORKER_H
 
-#define HIBERNATION_ENABLED
+//#define HIBERNATION_ENABLED
 
 
 #include <genericworker.h>
@@ -63,6 +63,7 @@ public slots:
 	void emergency();
 	void restore();
 	int startup_check();
+	void new_mouse_coordinates(QPointF);
 private:
 	bool startup_check_flag;
 
@@ -106,6 +107,18 @@ private:
 		QGraphicsRectItem *item;
 	};
 
+	struct TupleHash
+	{
+		template <typename T1, typename T2>
+		std::size_t operator()(const std::tuple<T1, T2>& t) const
+		{
+			auto h1 = std::hash<T1>{}(std::get<0>(t));
+			auto h2 = std::hash<T2>{}(std::get<1>(t));
+			return h1 ^ (h2 << 1);
+		}
+	};
+
+
 	// lidar
 	std::vector<Eigen::Vector2f> read_lidar_bpearl();
 	std::vector<Eigen::Vector2f> read_lidar_helios();
@@ -139,10 +152,9 @@ private:
 		return {x, y};
 	}
 
-	QGraphicsScene* scene;
-	QGraphicsView* view;
+    //Dijkstra
+	std::vector<std::tuple<int, int>> dijkstra(std::tuple<int, int> start, std::tuple<int, int> end);
 
-    //Dijkstra (Ultima parte)
 
 };
 
