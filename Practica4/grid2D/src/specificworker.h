@@ -42,7 +42,6 @@
 #include <random>
 #include <doublebuffer_sync/doublebuffer_sync.h>
 #include <locale>
-#include <qcustomplot/qcustomplot.h>
 #include <timer/timer.h>
 
 
@@ -63,7 +62,8 @@ public slots:
 	void emergency();
 	void restore();
 	int startup_check();
-	void new_mouse_coordinates(QPointF);
+	void new_mouse_coordinates(QPointF punto);
+	void do_something_with_coordinates(QPointF punto);
 private:
 	bool startup_check_flag;
 
@@ -83,7 +83,7 @@ private:
 		// lidar
 		std::string LIDAR_NAME_LOW = "bpearl";
 		std::string LIDAR_NAME_HIGH = "helios";
-		QRectF GRID_MAX_DIM{-5000, 2500, 10000, -5000};
+		QRectF GRID_MAX_DIM{-5000, 5000, 10000, -10000};
 		// control track
 		float acc_distance_factor = 2;
 		float k1 = 1.1;  // proportional gain for the angle error;
@@ -128,32 +128,26 @@ private:
 	void draw_lidar(auto &filtered_points, QGraphicsScene *scene);
 	QGraphicsPolygonItem *robot_draw;
 
-	QGraphicsView* frame;
-
     //GRID
-	static const int SIZE = 50;  // Tamaño del grid (50x50 celdas)
-	std::array<std::array<TCell, SIZE>, SIZE> grid;  // Matriz de celdas
+	static const int WORLD_SIZE = 10000; // mm
+	static const int CELL_SIZE = 50;  // Tamaño del grid (50x50 celdas)
+	static const int GRID_SIZE = WORLD_SIZE / CELL_SIZE; // Tamaño de la cuadrícula
+
+	std::array<std::array<TCell, GRID_SIZE>, GRID_SIZE> grid;  // Matriz de celdas
+	void clearGrid(); // Limpiar la cuadrícula
 
 	// Coordinates
 	void transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_points);
 
-	// Transformations
-	inline std::pair<int, int> fromWorldToGrid(float x, float y) const
-	{
-		int i = std::clamp(static_cast<int>((x + (params.GRID_MAX_DIM.width() / 2)) / params.TILE_SIZE), 0, SIZE - 1);
-		int j = std::clamp(static_cast<int>((y + (params.GRID_MAX_DIM.height() / 2)) / params.TILE_SIZE), 0, SIZE - 1);
-		return {i, j};
-	}
+	std::pair<int, int> fromWorldToGrid(float x, float y) const;
+	std::pair<float, float> fromGridToWorld(int i, int j) const;
 
-	inline std::pair<float, float> fromGridToWorld(int i, int j) const
-	{
-		float x = (i * params.TILE_SIZE) - (params.GRID_MAX_DIM.width() / 2);
-		float y = (j * params.TILE_SIZE) - (params.GRID_MAX_DIM.height() / 2);
-		return {x, y};
-	}
 
     //Dijkstra
 	std::vector<std::tuple<int, int>> dijkstra(std::tuple<int, int> start, std::tuple<int, int> end);
+
+	//Draw_path
+	void draw_path(const std::vector<std::tuple<int, int>> &path);
 
 
 };

@@ -64,31 +64,32 @@ void SpecificWorker::initialize()
 	else
 	{
 
-		#ifdef HIBERNATION_ENABLED
-			hibernationChecker.start(500);
-		#endif
 		// Viewer
         viewer = new AbstractGraphicViewer(this->frame, params.GRID_MAX_DIM);
-        auto [r, e] = viewer->add_robot(params.ROBOT_WIDTH, params.ROBOT_LENGTH, 0, 100, QColor("Blue"));
+		viewer->setSceneRect(params.GRID_MAX_DIM);
+        auto [r, e] = viewer->add_robot(params.ROBOT_WIDTH, params.ROBOT_LENGTH, 0, 0, QColor("Blue"));
         robot_draw = r;
         viewer->setStyleSheet("background-color: lightGray;");
         this->resize(800, 700);
-
+		viewer->show();
 		std::cout << "Datos Lidar dibujados correctamente en el lienzo." << std::endl;
 
 
-		for (int i = 0; i < SIZE; ++i)
+		for (int i = 0; i < GRID_SIZE; ++i)
 		{
-			for (int j = 0; j < SIZE; ++j)
+			for (int j = 0; j < GRID_SIZE; ++j)
 			{
 				// Inicializamos cada celda
 				grid[i][j].state = State::FREE; // La celda está libre al principio
-				grid[i][j].item = viewer->scene.addRect(i * 100, j * 100, 100, 100, QPen(), QBrush(Qt::lightGray)); // Dibujar el rectángulo
-				grid[i][j].item->setPos(i * 100, j * 100); // Posicionamos la celda en la escena
+				grid[i][j].item = viewer->scene.addRect(-CELL_SIZE/2, -CELL_SIZE/2, CELL_SIZE, CELL_SIZE, QPen(), QBrush(Qt::lightGray)); // Dibujar el rectángulo
+				auto [x,y] = fromGridToWorld(i, j);
+				grid[i][j].item->setPos(x, y); // Posicionamos la celda en la escena
 			}
 		}
+
+
 		std::cout << "Cuadrícula inicializada y dibujada correctamente." << std::endl;
-		connect(viewer, SIGNAL(new_mouse_coordinates(QPointF)), this, SLOT(new_mouse_coordinates(QPointF)));
+		connect(viewer, SIGNAL(new_mouse_coordinates(QPointF)), this, SLOT(do_something_with_coordinates(QPointF)));
 
 		this->setPeriod(STATES::Compute, 100);
 		//this->setPeriod(STATES::Emergency, 500);
@@ -97,35 +98,25 @@ void SpecificWorker::initialize()
 
 void SpecificWorker::compute()
 {
-    std::cout << "Compute worker" << std::endl;
-	//computeCODE
-	//QMutexLocker locker(mutex);
-	//try
-	//{
-	  //camera_proxy->getYImage(0,img, cState, bState);
-        //if (img.empty())
-          //  emit goToEmergency()
-	  //memcpy(image_gray.data, &img[0], m_width*m_height*sizeof(uchar));
-	  //searchTags(image_gray);
-	//}
-	//catch(const Ice::Exception &e)
-	//{
-	  //std::cout << "Error reading from Camera" << e << std::endl;
-	//}
+	std::cout << "Compute worker" << std::endl;
+
 	// Leer datos LiDAR
-    auto lidar_points = read_lidar_bpearl();
+	auto lidar_points = read_lidar_bpearl();
 
-    if (!lidar_points.empty())
-    {
-        // Transformar puntos LiDAR a la cuadrícula
-        transTo2DGrid(lidar_points);
-    }
-    else
-    {
-        qWarning() << "No LiDAR points available.";
-    }
+	if (!lidar_points.empty())
+	{
+		// Transformar puntos LiDAR a la cuadrícula
+		transTo2DGrid(lidar_points);
 
+		// Dibujar los puntos LiDAR en la cuadrícula
+		draw_lidar(lidar_points, &viewer->scene);
+	}
+	else
+	{
+		qWarning() << "No LiDAR points available.";
+	}
 }
+
 
 std::vector<Eigen::Vector2f> SpecificWorker::read_lidar_bpearl()
 {
@@ -214,10 +205,96 @@ int SpecificWorker::startup_check()
 }
 
 void SpecificWorker::new_mouse_coordinates(QPointF punto) {
-	qDebug() << "Coordenadas: " << punto;
-	//Comprobar primero que funciona y luego añadir dijkstra en este metodo
+	qDebug() << "Coordenadas del ratón:" << punto;
+
+	// Convertir las coordenadas del ratón (en el mundo) a coordenadas de la cuadrícula
+	auto [target_i, target_j] = fromWorldToGrid(punto.x(), punto.y());
+	auto [robot_i, robot_j] = fromWorldToGrid(0, 0); // Suponiendo que el robot está en el centro (0, 0)
+
+	// Verificar si las coordenadas objetivo están dentro de los límites de la cuadrícula
+	if (target_i < 0 || target_i >= GRID_SIZE || target_j < 0 || target_j >= GRID_SIZE) {
+		qWarning() << "Coordenadas fuera de los límites de la cuadrícula.";
+		return;
+	}
+
+	// Comprobar si la celda de destino está ocupada
+	if (grid[target_i][target_j].state == State::OCCUPIED) {
+		qWarning() << "La celda objetivo está ocupada.";
+		return;
+	}
+
+	// Calcular el camino usando Dijkstra
+	auto path = dijkstra({robot_i, robot_j}, {target_i, target_j});
+
+	// Si no se encuentra un camino válido
+	if (path.empty()) {
+		qWarning() << "No se encontró un camino válido.";
+		return;
+	}
+
+	// Dibujar el camino en la cuadrícula
+	draw_path(path);
 }
 
+
+void SpecificWorker::do_something_with_coordinates(QPointF punto)
+{
+	qDebug() << "Mouse clicked at:" << punto;
+
+	// Convert QPointF to grid coordinates
+	auto [i, j] = fromWorldToGrid(punto.x(), punto.y());
+	auto [robot_i, robot_j] = fromWorldToGrid(0, 0); // Assuming robot is at the center
+
+	// Call Dijkstra to calculate the path
+	auto path = dijkstra({robot_i, robot_j}, {i, j});
+
+	if (path.empty())
+	{
+		qWarning() << "No valid path found.";
+		return;
+	}
+
+	// Draw the path on the grid
+	draw_path(path);
+}
+
+std::pair<int, int> SpecificWorker::fromWorldToGrid(float x, float y) const
+{
+	int i = std::clamp(static_cast<int>((x + (params.GRID_MAX_DIM.width() / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
+	int j = std::clamp(static_cast<int>((y + (params.GRID_MAX_DIM.height() / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
+	return {i, j};
+}
+
+std::pair<float, float> SpecificWorker::fromGridToWorld(int i, int j) const
+{
+	float x = (i * params.TILE_SIZE) - (params.GRID_MAX_DIM.width() / 2);
+	float y = (j * params.TILE_SIZE) - (params.GRID_MAX_DIM.height() / 2);
+	return {x, y};
+}
+
+
+void SpecificWorker::draw_path(const std::vector<std::tuple<int, int>> &path)
+{
+	// Clear any existing path visuals
+	static std::vector<QGraphicsItem*> path_items;
+	for (auto item : path_items)
+	{
+		viewer->scene.removeItem(item);
+		delete item;
+	}
+	path_items.clear();
+
+	// Draw the path as a series of rectangles or lines
+	QPen pen(Qt::blue);
+	QBrush brush(Qt::blue);
+	for (const auto &[i, j] : path)
+	{
+		auto [x, y] = fromGridToWorld(i, j);
+		QGraphicsRectItem *rect = viewer->scene.addRect(x - params.TILE_SIZE / 2, y - params.TILE_SIZE / 2,
+														params.TILE_SIZE, params.TILE_SIZE, pen, brush);
+		path_items.push_back(rect);
+	}
+}
 
 RoboCompGrid2D::Result SpecificWorker::Grid2D_getPaths(RoboCompGrid2D::TPoint source, RoboCompGrid2D::TPoint target)
 {
@@ -226,8 +303,8 @@ RoboCompGrid2D::Result SpecificWorker::Grid2D_getPaths(RoboCompGrid2D::TPoint so
 	auto [i_end, j_end] = fromWorldToGrid(target.x, target.y);
 
 	// Verificar que las coordenadas están dentro de los límites de la cuadrícula
-	if (i_start < 0 || i_start >= SIZE || j_start < 0 || j_start >= SIZE ||
-		i_end < 0 || i_end >= SIZE || j_end < 0 || j_end >= SIZE)
+	if (i_start < 0 || i_start >= GRID_SIZE || j_start < 0 || j_start >= GRID_SIZE ||
+		i_end < 0 || i_end >= GRID_SIZE || j_end < 0 || j_end >= GRID_SIZE)
 	{
 		return { {}, QDateTime::currentMSecsSinceEpoch(), "Source or target out of bounds", false };
 	}
@@ -251,10 +328,8 @@ RoboCompGrid2D::Result SpecificWorker::Grid2D_getPaths(RoboCompGrid2D::TPoint so
 	return {result_path, QDateTime::currentMSecsSinceEpoch(), "", true};
 }
 
-
-void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_points)
+void SpecificWorker::clearGrid()
 {
-	// Limpiar el estado actual de la cuadrícula
 	for (auto &row : grid)
 	{
 		for (auto &cell : row)
@@ -263,6 +338,12 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 			cell.item->setBrush(QBrush(Qt::lightGray)); // Visualización de celdas libres
 		}
 	}
+}
+
+void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_points)
+{
+	// Limpiar el estado actual de la cuadrícula
+	clearGrid();
 
 	// Procesar puntos LiDAR
 	for (const auto &point : lidar_points)
@@ -278,7 +359,7 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 
 			auto [i, j] = fromWorldToGrid(x, y);
 
-			if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
+			if (i >= 0 && i < GRID_SIZE && j >= 0 && j < GRID_SIZE)
 			{
 				grid[i][j].state = State::FREE; // Intermedias como libres
 				grid[i][j].item->setBrush(QBrush(Qt::white));
@@ -287,16 +368,30 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 
 		// Marcar la última celda como ocupada
 		auto [i, j] = fromWorldToGrid(point.x(), point.y());
-		if (i >= 0 && i < SIZE && j >= 0 && j < SIZE)
+		if (i >= 0 && i < GRID_SIZE && j >= 0 && j < GRID_SIZE)
 		{
 			grid[i][j].state = State::OCCUPIED;
 			grid[i][j].item->setBrush(QBrush(Qt::red));
-		}
 
-		//IMPORTANTE
-		//Añadir que los vecinos estén ocupados y a rojo
+			// Marcar las celdas vecinas como ocupadas
+			const std::vector<std::pair<int, int>> neighbors = {
+				{i - 1, j}, {i + 1, j}, {i, j - 1}, {i, j + 1}, // Vecinos cardinales
+				{i - 1, j - 1}, {i - 1, j + 1}, {i + 1, j - 1}, {i + 1, j + 1} // Vecinos diagonales
+			};
+
+			for (const auto &[ni, nj] : neighbors)
+			{
+				// Verificar si el vecino está dentro de los límites
+				if (ni >= 0 && ni < GRID_SIZE && nj >= 0 && nj < GRID_SIZE)
+				{
+					grid[ni][nj].state = State::OCCUPIED;
+					grid[ni][nj].item->setBrush(QBrush(Qt::red));
+				}
+			}
+		}
 	}
 }
+
 
 std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> start, std::tuple<int, int> end)
 {
@@ -307,8 +402,8 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
     const auto &[start_i, start_j] = start;
     const auto &[end_i, end_j] = end;
 
-    if (start_i < 0 || start_i >= SIZE || start_j < 0 || start_j >= SIZE ||
-        end_i < 0 || end_i >= SIZE || end_j < 0 || end_j >= SIZE)
+    if (start_i < 0 || start_i >= GRID_SIZE || start_j < 0 || start_j >= GRID_SIZE ||
+        end_i < 0 || end_i >= GRID_SIZE || end_j < 0 || end_j >= GRID_SIZE)
     {
         qWarning() << "Start or end point is out of bounds.";
         return {};
@@ -330,9 +425,9 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
     std::unordered_map<Node, Node, TupleHash> previous;
 
     // Inicializar todas las distancias como "infinito"
-    for (int i = 0; i < SIZE; ++i)
+    for (int i = 0; i < GRID_SIZE; ++i)
     {
-        for (int j = 0; j < SIZE; ++j)
+        for (int j = 0; j < GRID_SIZE; ++j)
         {
             Node node = {i, j};
             min_distance[node] = std::numeric_limits<int>::max();
@@ -366,7 +461,7 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
             int neighbor_j = current_j + dj;
 
             // Verificar si el vecino está dentro de los límites
-            if (neighbor_i < 0 || neighbor_i >= SIZE || neighbor_j < 0 || neighbor_j >= SIZE)
+            if (neighbor_i < 0 || neighbor_i >= GRID_SIZE || neighbor_j < 0 || neighbor_j >= GRID_SIZE)
                 continue;
 
             Node neighbor = {neighbor_i, neighbor_j};
