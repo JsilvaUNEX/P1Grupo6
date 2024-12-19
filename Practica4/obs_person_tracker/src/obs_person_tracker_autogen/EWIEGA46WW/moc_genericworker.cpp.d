@@ -1,13 +1,14 @@
-/home/usuario/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericworker.cpp: /home/robocomp/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/genericworker.h \
-  /home/usuario/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/obs_person_tracker_autogen/moc_predefs.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/Camera360RGB.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/CommonBehavior.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/GenericBase.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/Lidar3D.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/OmniRobot.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/VisualElementsPub.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/config.h \
-  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/ui_mainUI.h \
+/home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericworker.cpp: /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/genericworker.h \
+  /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/obs_person_tracker_autogen/moc_predefs.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/Camera360RGB.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/CommonBehavior.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/GenericBase.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/Grid2D.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/Lidar3D.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/OmniRobot.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/VisualElementsPub.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/config.h \
+  /home/usuario/robocomp_ws/src/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/ui_mainUI.h \
   /home/usuario/robocomp_ws/src/robocomp/robocomp_core/classes/grafcetStep/GRAFCETStep.h \
   /home/usuario/robocomp_ws/src/robocomp/robocomp_core/classes/qlog/qlog.h \
   /usr/include/GL/gl.h \

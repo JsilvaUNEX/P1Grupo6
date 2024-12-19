@@ -260,15 +260,17 @@ void SpecificWorker::do_something_with_coordinates(QPointF punto)
 
 std::pair<int, int> SpecificWorker::fromWorldToGrid(float x, float y) const
 {
-	int i = std::clamp(static_cast<int>((x + (params.GRID_MAX_DIM.width() / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
-	int j = std::clamp(static_cast<int>((y + (params.GRID_MAX_DIM.height() / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
+	//int i = std::clamp(static_cast<int>((x + (params.GRID_MAX_DIM.width() / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
+	//int j = std::clamp(static_cast<int>((y + (params.GRID_MAX_DIM.height() / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
+	int i = std::clamp(static_cast<int>((x + (WORLD_SIZE / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
+	int j = std::clamp(static_cast<int>((y + (WORLD_SIZE / 2)) / params.TILE_SIZE), 0, GRID_SIZE - 1);
 	return {i, j};
 }
 
 std::pair<float, float> SpecificWorker::fromGridToWorld(int i, int j) const
 {
-	float x = (i * params.TILE_SIZE) - (params.GRID_MAX_DIM.width() / 2);
-	float y = (j * params.TILE_SIZE) - (params.GRID_MAX_DIM.height() / 2);
+	float x = (i * params.TILE_SIZE) - (WORLD_SIZE / 2);
+	float y = (j * params.TILE_SIZE) - (WORLD_SIZE / 2);
 	return {x, y};
 }
 

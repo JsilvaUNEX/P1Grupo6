@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../../../../../../../robocomp/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/specificworker.h"
+#include "../../specificworker.h"
 #include <QtGui/qtextcursor.h>
 #include <QScreen>
 #include <QtCore/qbytearray.h>

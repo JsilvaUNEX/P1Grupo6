@@ -67,6 +67,7 @@ public slots:
 private:
 	bool startup_check_flag;
 
+
 	struct Params
 	{
 		float ROBOT_WIDTH = 460;  // mm

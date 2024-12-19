@@ -267,7 +267,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "src/CMakeFiles/ICES__home_usuario_robocomp_ws_src_robocomp_components_P1Grupo6_Practica4_grid2D_src.dir/DependInfo.cmake"
+  "src/CMakeFiles/ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_grid2D_src.dir/DependInfo.cmake"
   "src/CMakeFiles/Grid2D.dir/DependInfo.cmake"
   "src/CMakeFiles/Grid2D_autogen_timestamp_deps.dir/DependInfo.cmake"
   "src/CMakeFiles/Grid2D_autogen.dir/DependInfo.cmake"

@@ -1,7 +1,7 @@
 src/CMakeFiles/obs_person_tracker.dir/GenericBase.cpp.o: \
- /home/usuario/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/GenericBase.cpp \
+ /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/GenericBase.cpp \
  /usr/include/stdc-predef.h \
- /home/usuario/robocomp/components/P1Grupo6/Practica3/obs_person_tracker/src/GenericBase.h \
+ /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/GenericBase.h \
  /usr/include/IceUtil/PushDisableWarnings.h /usr/include/Ice/ProxyF.h \
  /usr/include/Ice/Config.h /usr/include/IceUtil/Config.h \
  /usr/include/c++/12/stdlib.h /usr/include/c++/12/cstdlib \
