@@ -91,44 +91,76 @@ void SpecificWorker::compute()
     /// check if there is new YOLO data in buffer
     std::expected<RoboCompVisualElementsPub::TObject, std::string> tp_person = std::unexpected("No person found");
     auto [data_] = buffer.read_first();
-    if(data_.has_value())
+    if (data_.has_value())
         tp_person = find_person_in_data(data_.value().objects);
 
-    if (tp_person.has_value()) {
+    if (tp_person.has_value())
+    {
+        // Obtener coordenadas de la persona
         float x = std::stof(tp_person.value().attributes.at("x_pos"));
         float y = std::stof(tp_person.value().attributes.at("y_pos"));
-        try {
-            RoboCompGrid2D::TPoint source(0,0,0);
+        try
+        {
+            // Definir los puntos fuente y objetivo
+            RoboCompGrid2D::TPoint source(0, 0, 0); // Coordenadas del robot (0,0)
+            RoboCompGrid2D::TPoint target(x, y, 2); // Coordenadas del objetivo con un radio de 2
 
-            //Radio 2 para rodear a la persona
-            RoboCompGrid2D::TPoint target(x, y, 2);
-
+            // Obtener el camino desde el proxy
             RoboCompGrid2D::Result path = grid2d_proxy->getPaths(source, target);
-        } catch (Ice::Exception &e) {
-            std::cout << e << std::endl;
+
+            // Comprobar que el camino es válido
+            if (path.path.empty())
+            {
+                std::cout << "Path is empty or not valid" << std::endl;
+            }
+            else
+            {
+                // Convertir el camino al formato esperado por state_machine
+                std::vector<Eigen::Vector2f> converted_path;
+                for (const auto &p : path.path)
+                {
+                    converted_path.emplace_back(p.x, p.y);
+                }
+
+                // Dibujar el camino en la escena
+                draw_path_to_person(converted_path, &viewer->scene);
+
+                // Llamar a la máquina de estados para rastrear a la persona
+                const auto &[adv, rot] = state_machine(converted_path);
+
+                // Mostrar los datos en la UI
+                if (tp_person)
+                {
+                    float d = std::hypot(std::stof(tp_person.value().attributes.at("x_pos")),
+                                         std::stof(tp_person.value().attributes.at("y_pos")));
+                    plot_distance(running_average(d) - params.PERSON_MIN_DIST);
+                    lcdNumber_dist_to_person->display(d);
+                    lcdNumber_angle_to_person->display(atan2(std::stof(tp_person.value().attributes.at("x_pos")),
+                                                             std::stof(tp_person.value().attributes.at("y_pos"))));
+                }
+                lcdNumber_adv->display(adv);
+                lcdNumber_rot->display(rot);
+
+                // Mover el robot hacia el objetivo
+                try
+                {
+                    omnirobot_proxy->setSpeedBase(0.f, adv, rot);
+                }
+                catch (const Ice::Exception &e)
+                {
+                    std::cout << e << std::endl;
+                }
+            }
         }
-
+        catch (Ice::Exception &e)
+        {
+            std::cout << "Failed to calculate path: " << e << std::endl;
+        }
     }
-    // call state machine to track person
-    const auto &[adv, rot] = state_machine(path);
-
-    // plot on UI
-    if(tp_person)
+    else
     {
-        float d = std::hypot(std::stof(tp_person.value().attributes.at("x_pos")),
-                                 std::stof(tp_person.value().attributes.at("y_pos")));
-        plot_distance(running_average(d) - params.PERSON_MIN_DIST);
-        lcdNumber_dist_to_person->display(d);
-        lcdNumber_angle_to_person->display(atan2(std::stof(tp_person.value().attributes.at("x_pos")),
-                                                 std::stof(tp_person.value().attributes.at("y_pos"))));
+        std::cout << "No person found in YOLO data" << std::endl;
     }
-    lcdNumber_adv->display(adv);
-    lcdNumber_rot ->display(rot);
-
-    // move the robot
-    try{ omnirobot_proxy->setSpeedBase(0.f, adv, rot); }
-    catch(const Ice::Exception &e){std::cout << e << std::endl;}
-
 }
 
 //////////////////////////////////////////////////////////////////
@@ -318,7 +350,31 @@ void SpecificWorker::draw_person(RoboCompVisualElementsPub::TObject &person, QGr
                                                            QPen(Qt::magenta, 20));
     items.push_back(item_line);
 }
+void SpecificWorker::draw_path_to_person(const auto &points, QGraphicsScene *scene)
+{
+    if(points.empty())
+        return;
 
+    // remove all items drawn in the previous iteration
+    static std::vector<QGraphicsItem*> items;
+    for(auto i: items)
+    {
+        scene->removeItem(i);
+        delete i;
+    }
+    items.clear();
+
+    // draw the path as a series of lines with dots in between
+    for (auto i : iter::range(0UL, points.size() - 1))
+    {
+        auto line = scene->addLine(QLineF(QPointF(points[i].x(), points[i].y()), QPointF(points[i+1].x(), points[i+1].y())),
+                                   QPen(Qt::blue, 40));
+        items.push_back(line);
+        auto dot = scene->addEllipse(-30, -30, 60, 60, QPen(Qt::darkBlue, 40));
+        dot->setPos(points[i].x(), points[i].y());
+        items.push_back(dot);
+    }
+}
 void SpecificWorker::plot_distance(double distance)
 {
     // add value to plot

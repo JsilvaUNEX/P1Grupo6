@@ -377,8 +377,8 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 
 			// Marcar las celdas vecinas como ocupadas
 			const std::vector<std::pair<int, int>> neighbors = {
-				{i - 1, j}, {i + 1, j}, {i, j - 1}, {i, j + 1}, // Vecinos cardinales
-				{i - 1, j - 1}, {i - 1, j + 1}, {i + 1, j - 1}, {i + 1, j + 1} // Vecinos diagonales
+				{i - 2, j}, {i + 2, j}, {i, j - 2}, {i, j + 2}, // Vecinos cardinales
+				{i - 2, j - 2}, {i - 2, j + 2}, {i + 2, j - 2}, {i + 2, j + 2} // Vecinos diagonales
 			};
 
 			for (const auto &[ni, nj] : neighbors)
@@ -393,6 +393,7 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 		}
 	}
 }
+
 
 
 std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> start, std::tuple<int, int> end)

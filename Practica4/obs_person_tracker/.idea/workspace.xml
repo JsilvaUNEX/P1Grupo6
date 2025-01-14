@@ -9,9 +9,9 @@
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeProjectFlavorService">
     <option name="flavorId" value="CMakePlainProjectFlavor" />
   </component>
@@ -31,132 +31,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18daa9bf-b611-4dd9-b210-495bbb9d6fb7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../grid2D/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/clion-Default-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/clion-environment.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/cmake_install.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.h" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/cache-v2-dcad623b4f48f9160539.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/cmakeFiles-v1-f6648f8cf0d2e237c9b9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/codemodel-v2-a14301ec00343198abd9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/directory-src-ba7d1249031e484034da.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/index-2024-11-27T14-59-00-0333.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/target-ICES__home_robocomp_robocomp_components_P1Grupo6_Practica3_obs_person_tracker_src-6b22e74b72384386bcc9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/target-obs_person_tracker-cbede83b2f43351eb49e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/target-obs_person_tracker_autogen-d28975eae14232104046.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/toolchains-v1-6f549a7495c37c099964.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.22.1/CompilerIdCXX/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.30.5/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.30.5/CMakeSystem.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-Default-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-Default-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/config" beforeDir="false" afterPath="$PROJECT_DIR$/etc/config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/config.new" beforeDir="false" afterPath="$PROJECT_DIR$/etc/config.new" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Camera360RGB.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Camera360RGB.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Camera360RGB.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Camera360RGB.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/CommonBehavior.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/CommonBehavior.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/CommonBehavior.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/CommonBehavior.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/GenericBase.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/GenericBase.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/GenericBase.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/GenericBase.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Lidar3D.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Lidar3D.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Lidar3D.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/Lidar3D.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/OmniRobot.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/OmniRobot.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/OmniRobot.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/OmniRobot.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/VisualElementsPub.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/VisualElementsPub.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/VisualElementsPub.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/VisualElementsPub.cpp.o.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/obs_person_tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/obs_person_tracker" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/commonbehaviorI.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/commonbehaviorI.cpp.o.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/dbscan.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/dbscan.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericmonitor.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericmonitor.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericmonitor.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericmonitor.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericworker.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericworker.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericworker.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/genericworker.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/home/robocomp/robocomp/classes/qcustomplot/qcustomplot.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/home/robocomp/robocomp/classes/qcustomplot/qcustomplot.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/home/robocomp/robocomp/classes/sigwatch/sigwatch.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/home/robocomp/robocomp/classes/sigwatch/sigwatch.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/main.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/main.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/obs_person_tracker_autogen/mocs_compilation.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/obs_person_tracker_autogen/mocs_compilation.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/obs_person_tracker_autogen/mocs_compilation.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/obs_person_tracker_autogen/mocs_compilation.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/room_detector.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/room_detector.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificmonitor.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificmonitor.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificmonitor.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificmonitor.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/visibility_graph.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/visibility_graph.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/visibility_graph.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/visibility_graph.cpp.o.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/visualelementspubI.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/visualelementspubI.cpp.o.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenUsed.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenUsed.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen_timestamp_deps.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen_timestamp_deps.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/src/cmake_install.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericworker.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/genericworker.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/genericworker.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/E2AFXFXIXU/moc_qcustomplot.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/E2AFXFXIXU/moc_qcustomplot.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericmonitor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericmonitor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericmonitor.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericmonitor.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericworker.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericworker.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_genericworker.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificmonitor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificmonitor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificmonitor.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificmonitor.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificworker.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificworker.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/EWIEGA46WW/moc_specificworker.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/JPJZV43UZ7/moc_abstract_graphic_viewer.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/JPJZV43UZ7/moc_abstract_graphic_viewer.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/O3EPOQWXUL/moc_GRAFCETStep.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/O3EPOQWXUL/moc_GRAFCETStep.cpp.d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/deps" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/include/moc_sigwatch.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/include/moc_sigwatch.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/include/moc_sigwatch.cpp.d" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/include/moc_sigwatch.cpp.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/moc_predefs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/moc_predefs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/mocs_compilation.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/mocs_compilation.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/specificworker.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,9 +85,9 @@
     <option name="minorVersion" value="3.1" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2qRheVW7qEHpwwFgtudDP7uY4Kn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -196,7 +104,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/usuario/robocomp/interfaces/IDSLs/Grid2D.idsl",
+    "last_opened_file_path": "/home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -206,12 +114,12 @@
   }
 }]]></component>
   <component name="RunManager" selected="CMake Application.obs_person_tracker">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="obs_person_tracker" TARGET_NAME="ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src" CONFIG_NAME="Default">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="obs_person_tracker" TARGET_NAME="ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src" CONFIG_NAME="Default">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -234,7 +142,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1734631390246</updated>
-      <workItem from="1734631391292" duration="734000" />
+      <workItem from="1734631391292" duration="1296000" />
+      <workItem from="1736875530783" duration="4365000" />
     </task>
     <servers />
   </component>
