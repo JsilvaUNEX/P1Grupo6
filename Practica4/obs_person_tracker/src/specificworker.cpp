@@ -96,60 +96,47 @@ void SpecificWorker::compute()
 
     if (tp_person.has_value())
     {
-        // Obtener coordenadas de la persona
-        float x = std::stof(tp_person.value().attributes.at("x_pos"));
-        float y = std::stof(tp_person.value().attributes.at("y_pos"));
+        // Definir el target directamente
+        RoboCompGrid2D::TPoint target{
+            std::stof(tp_person.value().attributes.at("x_pos")),
+            std::stof(tp_person.value().attributes.at("y_pos")),
+            2 // Radio del target
+        };
+
         try
         {
-            // Definir los puntos fuente y objetivo
-            RoboCompGrid2D::TPoint source(0, 0, 0); // Coordenadas del robot (0,0)
-            RoboCompGrid2D::TPoint target(x, y, 2); // Coordenadas del objetivo con un radio de 2
+            // Obtener el path desde el proxy
+            auto [t_path, _, __, ___] = grid2d_proxy->getPaths(RoboCompGrid2D::TPoint{0, 0, 0}, target);
 
-            // Obtener el camino desde el proxy
-            RoboCompGrid2D::Result path = grid2d_proxy->getPaths(source, target);
-
-            // Comprobar que el camino es válido
-            if (path.path.empty())
+            if (t_path.empty())
             {
                 std::cout << "Path is empty or not valid" << std::endl;
+                return;
             }
-            else
+
+            // Convertir el camino a Eigen::Vector2f usando std::ranges::transform
+            std::vector<Eigen::Vector2f> converted_path;
+            std::ranges::transform(t_path, std::back_inserter(converted_path),
+                                   [](const auto &p) { return Eigen::Vector2f{p.x, p.y}; });
+
+            // Dibujar el camino
+            draw_path_to_person(converted_path, &viewer->scene);
+
+            // Llamar a la máquina de estados
+            const auto &[adv, rot] = state_machine(converted_path);
+
+            // Mostrar en la UI
+            lcdNumber_adv->display(adv);
+            lcdNumber_rot->display(rot);
+
+            try
             {
-                // Convertir el camino al formato esperado por state_machine
-                std::vector<Eigen::Vector2f> converted_path;
-                for (const auto &p : path.path)
-                {
-                    converted_path.emplace_back(p.x, p.y);
-                }
-
-                // Dibujar el camino en la escena
-                draw_path_to_person(converted_path, &viewer->scene);
-
-                // Llamar a la máquina de estados para rastrear a la persona
-                const auto &[adv, rot] = state_machine(converted_path);
-
-                // Mostrar los datos en la UI
-                if (tp_person)
-                {
-                    float d = std::hypot(std::stof(tp_person.value().attributes.at("x_pos")),
-                                         std::stof(tp_person.value().attributes.at("y_pos")));
-                    plot_distance(running_average(d) - params.PERSON_MIN_DIST);
-                    lcdNumber_dist_to_person->display(d);
-                    lcdNumber_angle_to_person->display(atan2(std::stof(tp_person.value().attributes.at("x_pos")),
-                                                             std::stof(tp_person.value().attributes.at("y_pos"))));
-                }
-                lcdNumber_adv->display(adv);
-                lcdNumber_rot->display(rot);
-
-                // Mover el robot hacia el objetivo
-                try
-                {
-                    omnirobot_proxy->setSpeedBase(0.f, adv, rot);
-                }
-                catch (const Ice::Exception &e)
-                {
-                    std::cout << e << std::endl;
-                }
+                // Enviar comandos al robot
+                omnirobot_proxy->setSpeedBase(0.f, adv, rot);
+            }
+            catch (const Ice::Exception &e)
+            {
+                std::cout << e << std::endl;
             }
         }
         catch (Ice::Exception &e)
@@ -162,6 +149,7 @@ void SpecificWorker::compute()
         std::cout << "No person found in YOLO data" << std::endl;
     }
 }
+
 
 //////////////////////////////////////////////////////////////////
 /// YOUR CODE HERE

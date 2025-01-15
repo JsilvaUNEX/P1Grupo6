@@ -7,7 +7,6 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -31,40 +30,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18daa9bf-b611-4dd9-b210-495bbb9d6fb7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.h" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-Default-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-Default-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/obs_person_tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/obs_person_tracker" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenUsed.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenUsed.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen_timestamp_deps.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen_timestamp_deps.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/deps" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/specificworker.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +81,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D",
+    "last_opened_file_path": "/home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -119,19 +96,14 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="obs_person_tracker" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="obs_person_tracker" TARGET_NAME="obs_person_tracker" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="obs_person_tracker" RUN_TARGET_NAME="obs_person_tracker">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="CMake Application.obs_person_tracker" />
       <item itemvalue="CMake Application.ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src" />
+      <item itemvalue="CMake Application.obs_person_tracker" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -144,6 +116,9 @@
       <updated>1734631390246</updated>
       <workItem from="1734631391292" duration="1296000" />
       <workItem from="1736875530783" duration="4365000" />
+      <workItem from="1736961533013" duration="1000" />
+      <workItem from="1736961737347" duration="2860000" />
+      <workItem from="1736964624406" duration="2215000" />
     </task>
     <servers />
   </component>
