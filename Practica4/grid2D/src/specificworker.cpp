@@ -275,7 +275,7 @@ std::pair<float, float> SpecificWorker::fromGridToWorld(int i, int j) const
 }
 
 
-void SpecificWorker::draw_path(const std::vector<std::tuple<int, int>> &path)
+/*void SpecificWorker::draw_path(const std::vector<std::tuple<int, int>> &path)
 {
 	// Clear any existing path visuals
 	static std::vector<QGraphicsItem*> path_items;
@@ -289,6 +289,28 @@ void SpecificWorker::draw_path(const std::vector<std::tuple<int, int>> &path)
 	// Draw the path as a series of rectangles or lines
 	QPen pen(Qt::blue);
 	QBrush brush(Qt::blue);
+	for (const auto &[i, j] : path)
+	{
+		auto [x, y] = fromGridToWorld(i, j);
+		QGraphicsRectItem *rect = viewer->scene.addRect(x - params.TILE_SIZE / 2, y - params.TILE_SIZE / 2,
+														params.TILE_SIZE, params.TILE_SIZE, pen, brush);
+		path_items.push_back(rect);
+	}
+}*/
+
+void SpecificWorker::draw_path(const std::vector<std::tuple<int, int>> &path)
+{
+	static std::vector<QGraphicsItem *> path_items;
+
+	for (auto item : path_items)
+	{
+		viewer->scene.removeItem(item);
+		delete item;
+	}
+	path_items.clear();
+
+	QPen pen(QColor(128, 0, 128));
+	QBrush brush(QColor(128, 0, 128));
 	for (const auto &[i, j] : path)
 	{
 		auto [x, y] = fromGridToWorld(i, j);
@@ -336,13 +358,13 @@ void SpecificWorker::clearGrid()
 	{
 		for (auto &cell : row)
 		{
-			cell.state = State::FREE; // Reiniciar todas las celdas como libres
-			cell.item->setBrush(QBrush(Qt::lightGray)); // Visualización de celdas libres
+			cell.state = State::UNKNOWN; // Reiniciar todas las celdas como desconocidas
+			cell.item->setBrush(QBrush(Qt::lightGray)); // Visualización de celdas 
 		}
 	}
 }
 
-void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_points)
+/*void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_points)
 {
 	// Limpiar el estado actual de la cuadrícula
 	clearGrid();
@@ -363,8 +385,12 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 
 			if (i >= 0 && i < GRID_SIZE && j >= 0 && j < GRID_SIZE)
 			{
-				grid[i][j].state = State::FREE; // Intermedias como libres
-				grid[i][j].item->setBrush(QBrush(Qt::white));
+				if (grid[i][j].state != State::OCCUPIED)
+				{
+					grid[i][j].state = State::FREE; // Intermedias como libres
+					grid[i][j].item->setBrush(QBrush(Qt::white));
+				}
+
 			}
 		}
 
@@ -377,8 +403,8 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 
 			// Marcar las celdas vecinas como ocupadas
 			const std::vector<std::pair<int, int>> neighbors = {
-				{i - 2, j}, {i + 2, j}, {i, j - 2}, {i, j + 2}, // Vecinos cardinales
-				{i - 2, j - 2}, {i - 2, j + 2}, {i + 2, j - 2}, {i + 2, j + 2} // Vecinos diagonales
+				{i - 1, j}, {i + 1, j}, {i, j - 1}, {i, j + 1}, // Vecinos cardinales
+				{i - 1, j - 1}, {i - 1, j + 1}, {i + 1, j - 1}, {i + 1, j + 1} // Vecinos diagonales
 			};
 
 			for (const auto &[ni, nj] : neighbors)
@@ -392,11 +418,56 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 			}
 		}
 	}
+}*/
+
+void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_points)
+{
+	clearGrid();
+
+	for (const auto &point : lidar_points)
+	{
+		float n = point.norm() / params.TILE_SIZE;
+		for (float s = 0.f; s <= 1.f; s += 1.f / n)
+		{
+			auto [i, j] = fromWorldToGrid(s * point.x(), s * point.y());
+
+			if (i >= 0 && i < GRID_SIZE && j >= 0 && j < GRID_SIZE)
+			{
+				if (s + 1.f / n < 1.0)
+				{
+					if (grid[i][j].state != State::OCCUPIED)
+					{
+						grid[i][j].state = State::FREE;
+						grid[i][j].item->setBrush(QColor(Qt::white));
+					}
+				}
+				else
+				{
+					grid[i][j].state = State::OCCUPIED;
+					grid[i][j].item->setBrush(QColor(Qt::red));
+
+					for (int dx = -3; dx <= 3; ++dx)
+					{
+						for (int dy = -3; dy <= 3; ++dy)
+						{
+							int nx = i + dx;
+							int ny = j + dy;
+
+							if (nx >= 0 && nx < GRID_SIZE && ny >= 0 && ny < GRID_SIZE)
+							{
+								grid[nx][ny].state = State::OCCUPIED;
+								grid[nx][ny].item->setBrush(QColor(Qt::red));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 
-
-std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> start, std::tuple<int, int> end)
+/*std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> start, std::tuple<int, int> end)
 {
     using Node = std::tuple<int, int>;
     using DistanceNode = std::pair<int, Node>;
@@ -419,9 +490,11 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
         return {};
     }
 
-    // Direcciones posibles (arriba, abajo, izquierda, derecha)
+    //Direcciones posibles (arriba, abajo, izquierda, derecha)
     const std::vector<std::tuple<int, int>> directions = {
         {1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+
 
     // Distancias mínimas desde el nodo inicial
     std::unordered_map<Node, int, TupleHash> min_distance;
@@ -475,7 +548,6 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
 
             // Calcular la nueva distancia
             int new_distance = current_distance + 1; // Costo uniforme
-
             if (new_distance < min_distance[neighbor])
             {
                 min_distance[neighbor] = new_distance;
@@ -506,9 +578,103 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
 
     return path;
 }
+*/
 
+std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> start, std::tuple<int, int> end)
+{
+    using Node = std::tuple<int, int>;
+    using DistanceNode = std::pair<int, Node>;
 
+    const auto &[start_i, start_j] = start;
+    const auto &[end_i, end_j] = end;
 
+    if (start_i < 0 || start_i >= GRID_SIZE || start_j < 0 || start_j >= GRID_SIZE ||
+        end_i < 0 || end_i >= GRID_SIZE || end_j < 0 || end_j >= GRID_SIZE)
+    {
+        qWarning() << "Start or end point is out of bounds.";
+        return {};
+    }
+
+    if (grid[start_i][start_j].state == State::OCCUPIED ||
+        grid[end_i][end_j].state == State::OCCUPIED)
+    {
+        qWarning() << "Start or end point is occupied.";
+        return {};
+    }
+
+    std::unordered_map<Node, int, TupleHash> min_distance;
+    std::unordered_map<Node, Node, TupleHash> previous;
+    for (int i = 0; i < GRID_SIZE; ++i)
+    {
+        for (int j = 0; j < GRID_SIZE; ++j)
+        {
+            Node node = {i, j};
+            min_distance[node] = std::numeric_limits<int>::max();
+        }
+    }
+
+    Node start_node = {start_i, start_j};
+    min_distance[start_node] = 0;
+
+    std::priority_queue<DistanceNode, std::vector<DistanceNode>, std::greater<>> priority_queue;
+    priority_queue.push({0, start_node});
+
+    const std::vector<std::tuple<int, int>> directions = {
+        {1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    while (!priority_queue.empty())
+    {
+        auto [current_distance, current_node] = priority_queue.top();
+        priority_queue.pop();
+
+        if (current_node == std::make_tuple(end_i, end_j))
+            break;
+
+        const auto &[current_i, current_j] = current_node;
+
+        for (const auto &[di, dj] : directions)
+        {
+            int neighbor_i = current_i + di;
+            int neighbor_j = current_j + dj;
+
+            if (neighbor_i < 0 || neighbor_i >= GRID_SIZE || neighbor_j < 0 || neighbor_j >= GRID_SIZE)
+                continue;
+
+            Node neighbor = {neighbor_i, neighbor_j};
+
+            if (grid[neighbor_i][neighbor_j].state == State::OCCUPIED)
+                continue;
+
+            int new_distance = current_distance + 1;
+
+            if (new_distance < min_distance[neighbor])
+            {
+                min_distance[neighbor] = new_distance;
+                previous[neighbor] = current_node;
+                priority_queue.push({new_distance, neighbor});
+            }
+        }
+    }
+
+    std::vector<Node> path;
+    Node current = {end_i, end_j};
+
+    while (current != start_node)
+    {
+        path.push_back(current);
+        if (previous.find(current) == previous.end())
+        {
+            qWarning() << "No path found.";
+            return {};
+        }
+        current = previous[current];
+    }
+
+    path.push_back(start_node);
+    std::reverse(path.begin(), path.end());
+
+    return path;
+}
 
 /**************************************/
 // From the RoboCompLidar3D you can call this methods:

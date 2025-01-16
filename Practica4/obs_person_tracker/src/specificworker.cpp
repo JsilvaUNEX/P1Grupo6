@@ -86,6 +86,7 @@ void SpecificWorker::initialize()
 
 	}
 }
+
 void SpecificWorker::compute()
 {
     /// check if there is new YOLO data in buffer
@@ -149,7 +150,6 @@ void SpecificWorker::compute()
         std::cout << "No person found in YOLO data" << std::endl;
     }
 }
-
 
 //////////////////////////////////////////////////////////////////
 /// YOUR CODE HERE
@@ -231,7 +231,10 @@ SpecificWorker::RetVal SpecificWorker::track(const vector<Eigen::Vector2f> &path
     };
 
     if(path.empty())
-    { /* qWarning() << __FUNCTION__ << "No path found"; */ return RetVal(STATE::SEARCH, 0.f, 0.f); }
+    {
+        qWarning() << __FUNCTION__ << "No path found";
+        return RetVal(STATE::SEARCH, 0.f, 0.f);
+    }
 
     auto distance = std::accumulate(path.begin() + 1, path.end(), 0.f, [](auto a, auto b)
         {static Eigen::Vector2f prev{0, 0};

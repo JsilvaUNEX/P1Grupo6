@@ -31,14 +31,19 @@
   <component name="ChangeListManager">
     <list default="true" id="18daa9bf-b611-4dd9-b210-495bbb9d6fb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.h" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/bin/Grid2D" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/bin/Grid2D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/specificworker.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/specificworker.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/ParseCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/obs_person_tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/obs_person_tracker" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" afterDir="false" />
@@ -70,26 +75,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="CMake Application.obs_person_tracker">
     <configuration name="ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="obs_person_tracker" TARGET_NAME="ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src" CONFIG_NAME="Default">
       <method v="2">
@@ -119,6 +124,7 @@
       <workItem from="1736961533013" duration="1000" />
       <workItem from="1736961737347" duration="2860000" />
       <workItem from="1736964624406" duration="2215000" />
+      <workItem from="1737041319077" duration="5073000" />
     </task>
     <servers />
   </component>
