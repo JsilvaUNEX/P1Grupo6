@@ -100,6 +100,8 @@ void SpecificWorker::compute()
 {
 	std::cout << "Compute worker" << std::endl;
 
+	clearGrid();
+
 	// Leer datos LiDAR
 	auto lidar_points = read_lidar_bpearl();
 
@@ -115,6 +117,8 @@ void SpecificWorker::compute()
 	{
 		qWarning() << "No LiDAR points available.";
 	}
+
+
 }
 
 
@@ -277,7 +281,6 @@ std::pair<float, float> SpecificWorker::fromGridToWorld(int i, int j) const
 
 void SpecificWorker::draw_path(const std::vector<std::tuple<int, int>> &path)
 {
-	// Clear any existing path visuals
 	static std::vector<QGraphicsItem*> path_items;
 	for (auto item : path_items)
 	{
@@ -286,14 +289,11 @@ void SpecificWorker::draw_path(const std::vector<std::tuple<int, int>> &path)
 	}
 	path_items.clear();
 
-	// Draw the path as a series of rectangles or lines
-	QPen pen(Qt::blue);
 	QBrush brush(Qt::blue);
 	for (const auto &[i, j] : path)
 	{
 		auto [x, y] = fromGridToWorld(i, j);
-		QGraphicsRectItem *rect = viewer->scene.addRect(x - params.TILE_SIZE / 2, y - params.TILE_SIZE / 2,
-														params.TILE_SIZE, params.TILE_SIZE, pen, brush);
+		auto rect = viewer->scene.addRect(x - CELL_SIZE / 2, y - CELL_SIZE / 2, CELL_SIZE, CELL_SIZE, QPen(), brush);
 		path_items.push_back(rect);
 	}
 }
@@ -344,8 +344,6 @@ void SpecificWorker::clearGrid()
 
 void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_points)
 {
-	// Limpiar el estado actual de la cuadrícula
-	clearGrid();
 
 	// Procesar puntos LiDAR
 	for (const auto &point : lidar_points)
@@ -376,9 +374,27 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 			grid[i][j].item->setBrush(QBrush(Qt::red));
 
 			// Marcar las celdas vecinas como ocupadas
+			//const std::vector<std::pair<int, int>> neighbors = {
+			//	{i - 2, j}, {i + 2, j}, {i, j - 2}, {i, j + 2}, // Vecinos cardinales
+			//	{i - 2, j - 2}, {i - 2, j + 2}, {i + 2, j - 2}, {i + 2, j + 2} // Vecinos diagonales
+			//};
+
 			const std::vector<std::pair<int, int>> neighbors = {
-				{i - 2, j}, {i + 2, j}, {i, j - 2}, {i, j + 2}, // Vecinos cardinales
-				{i - 2, j - 2}, {i - 2, j + 2}, {i + 2, j - 2}, {i + 2, j + 2} // Vecinos diagonales
+				// Vecinos cardinales inmediatos
+				{i - 1, j}, {i + 1, j}, {i, j - 1}, {i, j + 1},
+				// Vecinos diagonales inmediatos
+				{i - 1, j - 1}, {i - 1, j + 1}, {i + 1, j - 1}, {i + 1, j + 1},
+				// Vecinos cardinales más lejanos (alcance 2)
+				{i - 2, j}, {i + 2, j}, {i, j - 2}, {i, j + 2},
+				// Vecinos diagonales más lejanos (alcance 2)
+				{i - 2, j - 2}, {i - 2, j + 2}, {i + 2, j - 2}, {i + 2, j + 2},
+				// Vecinos cardinales más lejanos (alcance 3)
+				{i - 3, j}, {i + 3, j}, {i, j - 3}, {i, j + 3},
+				// Vecinos diagonales más lejanos (alcance 3)
+				{i - 3, j - 3}, {i - 3, j + 3}, {i + 3, j - 3}, {i + 3, j + 3},
+				// Vecinos intermedios (alcance 3 en posiciones intermedias)
+				{i - 3, j - 1}, {i - 3, j + 1}, {i + 3, j - 1}, {i + 3, j + 1},
+				{i - 1, j - 3}, {i - 1, j + 3}, {i + 1, j - 3}, {i + 1, j + 3}
 			};
 
 			for (const auto &[ni, nj] : neighbors)
@@ -390,6 +406,7 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 					grid[ni][nj].item->setBrush(QBrush(Qt::red));
 				}
 			}
+
 		}
 	}
 }
@@ -411,6 +428,9 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
         qWarning() << "Start or end point is out of bounds.";
         return {};
     }
+
+	// Liberar las casillas ocupadas alrededor de la persona objetivo
+	//clearOccupiedAroundPerson(end_i, end_j);
 
     if (grid[start_i][start_j].state == State::OCCUPIED ||
         grid[end_i][end_j].state == State::OCCUPIED)
@@ -506,9 +526,6 @@ std::vector<std::tuple<int, int>> SpecificWorker::dijkstra(std::tuple<int, int> 
 
     return path;
 }
-
-
-
 
 /**************************************/
 // From the RoboCompLidar3D you can call this methods:

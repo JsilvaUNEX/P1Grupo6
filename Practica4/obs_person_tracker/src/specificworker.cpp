@@ -81,7 +81,7 @@ void SpecificWorker::initialize()
         });
         viewer->show();
 
-		this->setPeriod(STATES::Compute, 100);
+		this->setPeriod(STATES::Compute, 50);
 		//this->setPeriod(STATES::Emergency, 500);
 
 	}
