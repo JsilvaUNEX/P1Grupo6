@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/310/bin/cmake/linux/x64/bin/cmake
+CMAKE_COMMAND = /snap/clion/314/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/310/bin/cmake/linux/x64/bin/cmake -E rm -f
+RM = /snap/clion/314/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -99,8 +99,8 @@ src/Grid2D_autogen/timestamp: /usr/lib/qt6/libexec/moc
 src/Grid2D_autogen/timestamp: /usr/lib/qt6/libexec/uic
 src/Grid2D_autogen/timestamp: src/CMakeFiles/Grid2D.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Automatic MOC and UIC for target Grid2D"
-	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src && /snap/clion/310/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src/CMakeFiles/Grid2D_autogen.dir/AutogenInfo.json ""
-	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src && /snap/clion/310/bin/cmake/linux/x64/bin/cmake -E touch /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src/Grid2D_autogen/timestamp
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src && /snap/clion/314/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src/CMakeFiles/Grid2D_autogen.dir/AutogenInfo.json ""
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src && /snap/clion/314/bin/cmake/linux/x64/bin/cmake -E touch /home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D/src/Grid2D_autogen/timestamp
 
 src/CMakeFiles/Grid2D.dir/Grid2D_autogen/mocs_compilation.cpp.o: src/CMakeFiles/Grid2D.dir/flags.make
 src/CMakeFiles/Grid2D.dir/Grid2D_autogen/mocs_compilation.cpp.o: src/Grid2D_autogen/mocs_compilation.cpp

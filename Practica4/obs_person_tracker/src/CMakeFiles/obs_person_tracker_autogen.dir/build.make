@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/310/bin/cmake/linux/x64/bin/cmake
+CMAKE_COMMAND = /snap/clion/314/bin/cmake/linux/x64/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/310/bin/cmake/linux/x64/bin/cmake -E rm -f
+RM = /snap/clion/314/bin/cmake/linux/x64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -72,8 +72,8 @@ src/obs_person_tracker_autogen/timestamp: /usr/lib/qt6/libexec/moc
 src/obs_person_tracker_autogen/timestamp: /usr/lib/qt6/libexec/uic
 src/obs_person_tracker_autogen/timestamp: src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target obs_person_tracker"
-	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src && /snap/clion/310/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json ""
-	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src && /snap/clion/310/bin/cmake/linux/x64/bin/cmake -E touch /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/obs_person_tracker_autogen/timestamp
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src && /snap/clion/314/bin/cmake/linux/x64/bin/cmake -E cmake_autogen /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json ""
+	cd /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src && /snap/clion/314/bin/cmake/linux/x64/bin/cmake -E touch /home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker/src/obs_person_tracker_autogen/timestamp
 
 obs_person_tracker_autogen: src/CMakeFiles/obs_person_tracker_autogen
 obs_person_tracker_autogen: src/obs_person_tracker_autogen/timestamp

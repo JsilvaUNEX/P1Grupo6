@@ -86,7 +86,6 @@ void SpecificWorker::initialize()
 
 	}
 }
-
 void SpecificWorker::compute()
 {
     /// check if there is new YOLO data in buffer
@@ -97,47 +96,60 @@ void SpecificWorker::compute()
 
     if (tp_person.has_value())
     {
-        // Definir el target directamente
-        RoboCompGrid2D::TPoint target{
-            std::stof(tp_person.value().attributes.at("x_pos")),
-            std::stof(tp_person.value().attributes.at("y_pos")),
-            2 // Radio del target
-        };
-
+        // Obtener coordenadas de la persona
+        float x = std::stof(tp_person.value().attributes.at("x_pos"));
+        float y = std::stof(tp_person.value().attributes.at("y_pos"));
         try
         {
-            // Obtener el path desde el proxy
-            auto [t_path, _, __, ___] = grid2d_proxy->getPaths(RoboCompGrid2D::TPoint{0, 0, 0}, target);
+            // Definir los puntos fuente y objetivo
+            RoboCompGrid2D::TPoint source(0, 0, 0); // Coordenadas del robot (0,0)
+            RoboCompGrid2D::TPoint target(x, y, 2); // Coordenadas del objetivo con un radio de 2
 
-            if (t_path.empty())
+            // Obtener el camino desde el proxy
+            RoboCompGrid2D::Result path = grid2d_proxy->getPaths(source, target);
+
+            // Comprobar que el camino es válido
+            if (path.path.empty())
             {
                 std::cout << "Path is empty or not valid" << std::endl;
-                return;
             }
-
-            // Convertir el camino a Eigen::Vector2f usando std::ranges::transform
-            std::vector<Eigen::Vector2f> converted_path;
-            std::ranges::transform(t_path, std::back_inserter(converted_path),
-                                   [](const auto &p) { return Eigen::Vector2f{p.x, p.y}; });
-
-            // Dibujar el camino
-            draw_path_to_person(converted_path, &viewer->scene);
-
-            // Llamar a la máquina de estados
-            const auto &[adv, rot] = state_machine(converted_path);
-
-            // Mostrar en la UI
-            lcdNumber_adv->display(adv);
-            lcdNumber_rot->display(rot);
-
-            try
+            else
             {
-                // Enviar comandos al robot
-                omnirobot_proxy->setSpeedBase(0.f, adv, rot);
-            }
-            catch (const Ice::Exception &e)
-            {
-                std::cout << e << std::endl;
+                // Convertir el camino al formato esperado por state_machine
+                std::vector<Eigen::Vector2f> converted_path;
+                for (const auto &p : path.path)
+                {
+                    converted_path.emplace_back(p.x, p.y);
+                }
+
+                // Dibujar el camino en la escena
+                draw_path_to_person(converted_path, &viewer->scene);
+
+                // Llamar a la máquina de estados para rastrear a la persona
+                const auto &[adv, rot] = state_machine(converted_path);
+
+                // Mostrar los datos en la UI
+                if (tp_person)
+                {
+                    float d = std::hypot(std::stof(tp_person.value().attributes.at("x_pos")),
+                                         std::stof(tp_person.value().attributes.at("y_pos")));
+                    plot_distance(running_average(d) - params.PERSON_MIN_DIST);
+                    lcdNumber_dist_to_person->display(d);
+                    lcdNumber_angle_to_person->display(atan2(std::stof(tp_person.value().attributes.at("x_pos")),
+                                                             std::stof(tp_person.value().attributes.at("y_pos"))));
+                }
+                lcdNumber_adv->display(adv);
+                lcdNumber_rot->display(rot);
+
+                // Mover el robot hacia el objetivo
+                try
+                {
+                    omnirobot_proxy->setSpeedBase(0.f, adv, rot);
+                }
+                catch (const Ice::Exception &e)
+                {
+                    std::cout << e << std::endl;
+                }
             }
         }
         catch (Ice::Exception &e)
@@ -231,10 +243,7 @@ SpecificWorker::RetVal SpecificWorker::track(const vector<Eigen::Vector2f> &path
     };
 
     if(path.empty())
-    {
-        qWarning() << __FUNCTION__ << "No path found";
-        return RetVal(STATE::SEARCH, 0.f, 0.f);
-    }
+    { /* qWarning() << __FUNCTION__ << "No path found"; */ return RetVal(STATE::SEARCH, 0.f, 0.f); }
 
     auto distance = std::accumulate(path.begin() + 1, path.end(), 0.f, [](auto a, auto b)
         {static Eigen::Vector2f prev{0, 0};

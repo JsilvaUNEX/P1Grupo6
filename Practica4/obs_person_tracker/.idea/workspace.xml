@@ -30,23 +30,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18daa9bf-b611-4dd9-b210-495bbb9d6fb7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../grid2D/.cmake/api/v1/reply/cache-v2-2836ba5cf912896ba30f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/.cmake/api/v1/reply/cmakeFiles-v1-8f792e5dec57b5057de5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/.cmake/api/v1/reply/codemodel-v2-488f6016e9de4f535f24.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/.cmake/api/v1/reply/index-2025-01-14T17-33-07-0360.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/.cmake/api/v1/reply/target-Grid2D-18c75dbd3578717258b9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/3.30.5/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/3.30.5/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/bin/Grid2D" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/bin/Grid2D" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/compiler_depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/specificworker.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D.dir/specificworker.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/AutogenInfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/AutogenInfo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/AutogenUsed.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/AutogenUsed.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/ParseCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen_timestamp_deps.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen_timestamp_deps.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_grid2D_src.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_grid2D_src.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/Grid2D_autogen/deps" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/Grid2D_autogen/deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../grid2D/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/cache-v2-c058e2e57cf92ed27d94.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/cmakeFiles-v1-de021d2ca6dc650d0818.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/codemodel-v2-9de28a2c3fc2aa315c5b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/index-2025-01-14T17-25-31-0109.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/target-obs_person_tracker-7e3b699f40ce5261fe8d.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.30.5/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.30.5/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeRuleHashes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-Default-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-Default-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/obs_person_tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/obs_person_tracker" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/ICES__home_robocomp_robocomp_components_P1Grupo6_Practica4_obs_person_tracker_src.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenInfo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenUsed.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/AutogenUsed.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen_timestamp_deps.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen_timestamp_deps.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/obs_person_tracker_autogen/deps" beforeDir="false" afterPath="$PROJECT_DIR$/src/obs_person_tracker_autogen/deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/specificworker.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +103,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/specificworker.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -86,7 +132,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/robocomp/robocomp/components/P1Grupo6/Practica4/obs_person_tracker&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/robocomp/robocomp/components/P1Grupo6/Practica4/grid2D&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -124,7 +170,9 @@
       <workItem from="1736961533013" duration="1000" />
       <workItem from="1736961737347" duration="2860000" />
       <workItem from="1736964624406" duration="2215000" />
-      <workItem from="1737041319077" duration="5073000" />
+      <workItem from="1737041319077" duration="5777000" />
+      <workItem from="1737454525164" duration="2859000" />
+      <workItem from="1737458460204" duration="2248000" />
     </task>
     <servers />
   </component>
