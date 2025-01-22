@@ -374,12 +374,12 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 			grid[i][j].item->setBrush(QBrush(Qt::red));
 
 			// Marcar las celdas vecinas como ocupadas
-			//const std::vector<std::pair<int, int>> neighbors = {
-			//	{i - 2, j}, {i + 2, j}, {i, j - 2}, {i, j + 2}, // Vecinos cardinales
-			//	{i - 2, j - 2}, {i - 2, j + 2}, {i + 2, j - 2}, {i + 2, j + 2} // Vecinos diagonales
-			//};
-
 			const std::vector<std::pair<int, int>> neighbors = {
+			{i - 2, j}, {i + 2, j}, {i, j - 2}, {i, j + 2}, // Vecinos cardinales
+			{i - 2, j - 2}, {i - 2, j + 2}, {i + 2, j - 2}, {i + 2, j + 2} // Vecinos diagonales
+			};
+
+			/*const std::vector<std::pair<int, int>> neighbors = {
 				// Vecinos cardinales inmediatos
 				{i - 1, j}, {i + 1, j}, {i, j - 1}, {i, j + 1},
 				// Vecinos diagonales inmediatos
@@ -395,7 +395,7 @@ void SpecificWorker::transTo2DGrid(const std::vector<Eigen::Vector2f> &lidar_poi
 				// Vecinos intermedios (alcance 3 en posiciones intermedias)
 				{i - 3, j - 1}, {i - 3, j + 1}, {i + 3, j - 1}, {i + 3, j + 1},
 				{i - 1, j - 3}, {i - 1, j + 3}, {i + 1, j - 3}, {i + 1, j + 3}
-			};
+			};*/
 
 			for (const auto &[ni, nj] : neighbors)
 			{

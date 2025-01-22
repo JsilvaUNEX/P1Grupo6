@@ -7,6 +7,7 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -39,18 +40,12 @@
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/CMakeFiles/Grid2D_autogen.dir/compiler_depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../grid2D/src/specificworker.h" beforeDir="false" afterPath="$PROJECT_DIR$/../grid2D/src/specificworker.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/obs_person_tracker" beforeDir="false" afterPath="$PROJECT_DIR$/bin/obs_person_tracker" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker.dir/specificworker.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/ParseCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeFiles/obs_person_tracker_autogen.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/specificworker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/specificworker.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/specificworker.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/specificworker.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +128,9 @@
       <workItem from="1737041319077" duration="5777000" />
       <workItem from="1737454525164" duration="2859000" />
       <workItem from="1737458460204" duration="2452000" />
-      <workItem from="1737476737059" duration="7747000" />
+      <workItem from="1737476737059" duration="7977000" />
+      <workItem from="1737563991745" duration="6000" />
+      <workItem from="1737565358810" duration="628000" />
     </task>
     <servers />
   </component>
